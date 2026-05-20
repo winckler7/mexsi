@@ -1,0 +1,385 @@
+/* ═══════════════════════════════════════════════════
+   nosotros.css  –  MexSí / Página Nosotros
+   Depende de: styles.css (variables, reset, nav, footer)
+   ═══════════════════════════════════════════════════ */
+
+/* ── SCROLL REVEAL ── */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity .6s ease, transform .6s ease;
+}
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── SHARED HELPERS ── */
+.section-label {
+  font-family: var(--font-display);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  margin-bottom: .6rem;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 28px; height: 2px;
+  background: var(--orange);
+}
+.section-label.label-light { color: var(--teal); }
+.section-label.label-light::before { background: var(--teal); }
+
+.section-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 4vw, 3rem);
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--dark);
+}
+.section-title.light { color: var(--white); }
+
+.section-sub {
+  margin-top: .75rem;
+  font-size: 1rem;
+  color: #666;
+  max-width: 540px;
+  line-height: 1.65;
+}
+.section-header { margin-bottom: 3rem; }
+
+.btn-primary {
+  display: inline-block;
+  background: var(--orange);
+  color: var(--white);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .85rem 2rem;
+  border-radius: 2px;
+  text-decoration: none;
+  transition: background .2s, transform .15s;
+}
+.btn-primary:hover { background: #e07a0a; transform: translateY(-2px); }
+
+.btn-outline-light {
+  display: inline-block;
+  background: transparent;
+  color: var(--dark);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: .85rem 2rem;
+  border: 2px solid rgba(57,57,58,.3);
+  border-radius: 2px;
+  text-decoration: none;
+  transition: border-color .2s, transform .15s;
+}
+.btn-outline-light:hover { border-color: var(--dark); transform: translateY(-2px); }
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* ── PAGE HERO ── */
+.page-hero {
+  min-height: 55vh;
+  background: var(--dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 8rem 5vw 5rem;
+  position: relative;
+  overflow: hidden;
+}
+.nos-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 20% 80%, rgba(81,163,163,.1) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 20%, rgba(255,147,30,.1) 0%, transparent 60%);
+  pointer-events: none;
+}
+.nos-hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 5vw;
+  right: 0; height: 4px;
+  background: linear-gradient(90deg, var(--orange) 0%, var(--teal) 50%, var(--lavender) 100%);
+}
+.page-hero-content { position: relative; z-index: 2; }
+.page-eyebrow {
+  font-family: var(--font-display);
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--teal);
+  display: flex;
+  align-items: center;
+  gap: .7rem;
+  margin-bottom: 1rem;
+}
+.page-eyebrow::before {
+  content: '';
+  display: block;
+  width: 36px; height: 2px;
+  background: var(--teal);
+}
+.page-title {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(3rem, 7vw, 6rem);
+  text-transform: uppercase;
+  line-height: .95;
+  color: var(--white);
+}
+.page-title .accent { color: var(--orange); }
+.page-subtitle {
+  margin-top: 1.25rem;
+  font-size: 1.1rem;
+  color: rgba(247,247,247,.65);
+  max-width: 480px;
+  line-height: 1.65;
+}
+
+/* ── QUIÉNES SOMOS ── */
+.nos-who {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+  padding: 6rem 5vw;
+  background: var(--white);
+}
+.nos-who-text p {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: #555;
+  margin-top: 1.25rem;
+}
+.nos-who-text p strong { color: var(--dark); }
+.nos-who-text .section-title { margin-top: .5rem; }
+
+.nos-who-values {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.value-item {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.25rem;
+  background: var(--light);
+  border-radius: 4px;
+  border: 1px solid transparent;
+  transition: border-color .25s;
+}
+.value-item:hover { border-color: var(--orange); }
+.value-icon {
+  width: 44px; height: 44px;
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.value-icon.orange   { background: rgba(255,147,30,.12);  color: var(--orange); }
+.value-icon.teal     { background: rgba(81,163,163,.12);  color: var(--teal); }
+.value-icon.lavender { background: rgba(141,128,173,.12); color: var(--lavender); }
+.value-icon svg { width: 22px; height: 22px; }
+.value-item h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .95rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--dark);
+  margin-bottom: .25rem;
+}
+.value-item p {
+  font-size: .875rem;
+  color: #666;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── MERCADOS ── */
+.nos-mercados {
+  padding: 6rem 5vw;
+  background: var(--light);
+}
+.mercados-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+.mercado-card {
+  background: var(--white);
+  border-radius: 4px;
+  padding: 1.75rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .6rem;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: border-color .25s, transform .2s, box-shadow .25s;
+  cursor: default;
+}
+.mercado-card:hover {
+  border-color: var(--orange);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 30px rgba(255,147,30,.1);
+}
+.mercado-flag {
+  font-size: 2.5rem;
+  line-height: 1;
+}
+.mercado-card span {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+
+/* ── LABOR SOCIAL ── */
+.nos-social {
+  padding: 6rem 5vw;
+  background: var(--dark);
+}
+.nos-social-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: start;
+}
+.nos-social-text p {
+  color: rgba(247,247,247,.7);
+  font-size: 1rem;
+  line-height: 1.75;
+  margin-top: 1.25rem;
+}
+.nos-social-text p strong { color: var(--white); }
+
+.nos-social-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.social-pillar {
+  border-left: 3px solid var(--orange);
+  padding-left: 1.5rem;
+}
+.social-num {
+  font-family: var(--font-display);
+  font-size: .72rem;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: .4rem;
+}
+.social-pillar h4 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: var(--white);
+  margin-bottom: .4rem;
+}
+.social-pillar p {
+  font-size: .9rem;
+  color: rgba(247,247,247,.6);
+  line-height: 1.6;
+}
+
+/* ── IDIOMAS ── */
+.nos-idiomas {
+  padding: 6rem 5vw;
+  background: var(--white);
+}
+.idiomas-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1rem;
+}
+.idioma-card {
+  background: var(--light);
+  border-radius: 4px;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .75rem;
+  text-align: center;
+  border: 1px solid transparent;
+  transition: border-color .25s, transform .2s;
+}
+.idioma-card:hover {
+  border-color: var(--teal);
+  transform: translateY(-3px);
+}
+.idioma-flag { font-size: 2.75rem; line-height: 1; }
+.idioma-name {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: .8rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dark);
+}
+
+/* ── CTA ── */
+.nos-cta {
+  background: var(--light);
+  padding: 5rem 5vw;
+  text-align: center;
+  border-top: 3px solid var(--orange);
+}
+.nos-cta-content h2 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: var(--dark);
+  margin-bottom: .75rem;
+}
+.nos-cta-content p {
+  font-size: 1.05rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
+  .mercados-grid { grid-template-columns: repeat(3, 1fr); }
+  .idiomas-grid  { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nos-who { grid-template-columns: 1fr; gap: 3rem; }
+  .nos-social-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .mercados-grid { grid-template-columns: repeat(2, 1fr); }
+  .idiomas-grid  { grid-template-columns: repeat(2, 1fr); }
+}

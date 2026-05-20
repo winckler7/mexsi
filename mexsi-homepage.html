@@ -1,0 +1,1301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MexSí – Logística de verdad</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Barlow:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --orange: #FF931E;
+      --teal: #51A3A3;
+      --lavender: #8D80AD;
+      --dark: #39393A;
+      --light: #F7F7F7;
+      --white: #ffffff;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-body);
+      background: var(--light);
+      color: var(--dark);
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 5vw;
+      height: 72px;
+      background: rgba(247,247,247,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 2px solid var(--orange);
+      transition: box-shadow .3s;
+    }
+    nav.scrolled { box-shadow: 0 4px 30px rgba(57,57,58,.12); }
+
+    .nav-logo svg { height: 36px; width: auto; }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+    }
+    .nav-links a {
+      font-family: var(--font-display);
+      font-weight: 600;
+      font-size: 1rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: var(--dark);
+      text-decoration: none;
+      position: relative;
+      transition: color .2s;
+    }
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px; left: 0;
+      width: 0; height: 2px;
+      background: var(--orange);
+      transition: width .25s;
+    }
+    .nav-links a:hover { color: var(--orange); }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-cta {
+      background: var(--orange);
+      color: var(--white) !important;
+      padding: .45rem 1.2rem;
+      border-radius: 2px;
+      font-weight: 700 !important;
+      transition: background .2s !important;
+    }
+    .nav-cta:hover { background: #e07a0a !important; color: var(--white) !important; }
+    .nav-cta::after { display: none !important; }
+
+    .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); transition: .3s; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding: 72px 5vw 0;
+      gap: 4rem;
+      background: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -20%; right: -10%;
+      width: 60vw; height: 120%;
+      background: radial-gradient(ellipse at 70% 40%, rgba(255,147,30,.15) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content { position: relative; z-index: 2; }
+
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .6s .1s forwards;
+    }
+    .hero-eyebrow::before {
+      content: '';
+      display: block;
+      width: 40px; height: 2px;
+      background: var(--teal);
+    }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(3.5rem, 7vw, 6.5rem);
+      font-weight: 800;
+      line-height: .95;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp .7s .25s forwards;
+    }
+    .hero-title .accent { color: var(--orange); display: block; }
+
+    .hero-subtitle {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: rgba(247,247,247,.7);
+      max-width: 440px;
+      line-height: 1.65;
+      margin-bottom: 2.5rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .7s .4s forwards;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeUp .7s .55s forwards;
+    }
+
+    .btn-primary {
+      background: var(--orange);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .85rem 2rem;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: background .2s, transform .15s;
+    }
+    .btn-primary:hover { background: #e07a0a; transform: translateY(-2px); }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      padding: .85rem 2rem;
+      border: 2px solid rgba(255,255,255,.35);
+      border-radius: 2px;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: border-color .2s, color .2s, transform .15s;
+    }
+    .btn-outline:hover { border-color: var(--white); transform: translateY(-2px); }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      animation: fadeIn .9s .6s forwards;
+    }
+
+    .hero-icon-wrap {
+      position: relative;
+      width: min(420px, 90%);
+    }
+
+    .hero-icon-wrap svg {
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 0 60px rgba(255,147,30,.35));
+      animation: floatIcon 5s ease-in-out infinite;
+    }
+
+    .hero-stats {
+      position: absolute;
+      bottom: -2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0;
+      background: var(--orange);
+      border-radius: 2px;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .stat-item {
+      padding: .85rem 1.75rem;
+      border-right: 1px solid rgba(255,255,255,.25);
+      text-align: center;
+    }
+    .stat-item:last-child { border-right: none; }
+    .stat-num {
+      display: block;
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: 1.6rem;
+      color: var(--white);
+      line-height: 1;
+    }
+    .stat-label {
+      display: block;
+      font-size: .7rem;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.8);
+      margin-top: .15rem;
+    }
+
+    /* ── PILLARS ── */
+    #pillars {
+      padding: 7rem 5vw;
+      background: var(--white);
+    }
+
+    .section-header {
+      margin-bottom: 3.5rem;
+    }
+    .section-label {
+      font-family: var(--font-display);
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--orange);
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+      margin-bottom: .75rem;
+    }
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 30px; height: 2px;
+      background: var(--orange);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--dark);
+    }
+
+    .pillars-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5px;
+      background: var(--light);
+    }
+
+    .pillar-card {
+      background: var(--white);
+      padding: 2.5rem 2rem;
+      position: relative;
+      overflow: hidden;
+      transition: background .3s;
+    }
+    .pillar-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--orange);
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform .35s;
+    }
+    .pillar-card:hover::before { transform: scaleX(1); }
+    .pillar-card:hover { background: var(--light); }
+
+    .pillar-number {
+      font-family: var(--font-display);
+      font-size: 4.5rem;
+      font-weight: 800;
+      color: var(--light);
+      line-height: 1;
+      margin-bottom: .5rem;
+      transition: color .3s;
+    }
+    .pillar-card:hover .pillar-number { color: rgba(255,147,30,.12); }
+
+    .pillar-icon {
+      width: 48px; height: 48px;
+      background: var(--orange);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .pillar-icon svg { width: 24px; height: 24px; fill: var(--white); }
+
+    .pillar-name {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.3rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--dark);
+      margin-bottom: .75rem;
+    }
+    .pillar-desc {
+      font-size: .9rem;
+      line-height: 1.6;
+      color: #666;
+    }
+
+    /* ── ABOUT ── */
+    #about {
+      padding: 7rem 5vw;
+      background: var(--dark);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    #about .section-label { color: var(--teal); }
+    #about .section-label::before { background: var(--teal); }
+    #about .section-title { color: var(--white); }
+
+    .about-body {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: rgba(247,247,247,.75);
+      margin: 1.5rem 0 2.5rem;
+    }
+
+    .about-visual {
+      position: relative;
+    }
+
+    .about-card {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 4px;
+      padding: 2rem;
+    }
+
+    .customs-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .customs-col h4 {
+      font-family: var(--font-display);
+      font-size: .75rem;
+      font-weight: 700;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: .75rem;
+    }
+
+    .customs-col ul {
+      list-style: none;
+    }
+    .customs-col li {
+      font-size: .85rem;
+      color: rgba(247,247,247,.7);
+      padding: .3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+    }
+    .customs-col li::before {
+      content: '';
+      display: block;
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--teal);
+      flex-shrink: 0;
+    }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 7rem 5vw;
+      background: var(--light);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 2.5rem;
+      display: flex;
+      gap: 1.75rem;
+      align-items: flex-start;
+      border: 1px solid transparent;
+      transition: border-color .25s, box-shadow .25s, transform .2s;
+    }
+    .service-card:hover {
+      border-color: var(--orange);
+      box-shadow: 0 8px 40px rgba(255,147,30,.1);
+      transform: translateY(-3px);
+    }
+
+    .service-icon {
+      width: 56px; height: 56px;
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .service-icon.orange { background: rgba(255,147,30,.12); }
+    .service-icon.teal { background: rgba(81,163,163,.12); }
+    .service-icon.lavender { background: rgba(141,128,173,.12); }
+    .service-icon svg { width: 28px; height: 28px; }
+
+    .service-content h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: .04em;
+      color: var(--dark);
+      margin-bottom: .6rem;
+    }
+    .service-content p {
+      font-size: .9rem;
+      line-height: 1.65;
+      color: #666;
+    }
+
+    /* ── SECTORS ── */
+    #sectors {
+      padding: 7rem 5vw;
+      background: var(--white);
+    }
+
+    .sectors-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .sector-card {
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .sector-top {
+      height: 6px;
+    }
+    .sector-top.orange { background: var(--orange); }
+    .sector-top.teal { background: var(--teal); }
+    .sector-top.lavender { background: var(--lavender); }
+    .sector-top.dark { background: var(--dark); }
+
+    .sector-body {
+      background: var(--light);
+      padding: 1.75rem;
+    }
+
+    .sector-body h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.1rem;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      color: var(--dark);
+      margin-bottom: 1rem;
+    }
+
+    .sector-body ul {
+      list-style: none;
+    }
+    .sector-body li {
+      font-size: .875rem;
+      color: #555;
+      padding: .35rem 0;
+      border-bottom: 1px solid rgba(57,57,58,.08);
+    }
+    .sector-body li:last-child { border-bottom: none; }
+
+    /* ── FLEET ── */
+    #fleet {
+      padding: 7rem 5vw;
+      background: var(--dark);
+    }
+    #fleet .section-label { color: var(--orange); }
+    #fleet .section-label::before { background: var(--orange); }
+    #fleet .section-title { color: var(--white); }
+
+    .fleet-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 3.5rem;
+    }
+
+    .fleet-card {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 4px;
+      padding: 2rem;
+      transition: background .25s, border-color .25s;
+    }
+    .fleet-card:hover {
+      background: rgba(255,147,30,.08);
+      border-color: rgba(255,147,30,.4);
+    }
+
+    .fleet-card-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--orange);
+      margin-bottom: .75rem;
+    }
+
+    .fleet-card ul {
+      list-style: none;
+    }
+    .fleet-card li {
+      font-size: .875rem;
+      color: rgba(247,247,247,.7);
+      padding: .4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+      display: flex;
+      align-items: center;
+      gap: .6rem;
+    }
+    .fleet-card li:last-child { border-bottom: none; }
+    .fleet-card li::before {
+      content: '→';
+      color: var(--orange);
+      font-size: .75rem;
+      flex-shrink: 0;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      padding: 7rem 5vw;
+      background: var(--light);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+
+    .contact-info h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      text-transform: uppercase;
+      line-height: 1.05;
+      color: var(--dark);
+      margin-bottom: 1.25rem;
+    }
+    .contact-info p {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #666;
+      margin-bottom: 2rem;
+    }
+
+    .contact-offices {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .office-card {
+      background: var(--white);
+      border-left: 4px solid var(--orange);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 2px 2px 0;
+    }
+    .office-card h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: .9rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: var(--dark);
+      margin-bottom: .25rem;
+    }
+    .office-card p {
+      font-size: .875rem;
+      color: #666;
+      margin: 0;
+    }
+    .office-card a {
+      color: var(--teal);
+      text-decoration: none;
+    }
+    .office-card a:hover { text-decoration: underline; }
+
+    .contact-form {
+      background: var(--white);
+      border-radius: 4px;
+      padding: 2.5rem;
+      box-shadow: 0 4px 30px rgba(57,57,58,.08);
+    }
+
+    .form-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.25rem;
+    }
+    .form-group label {
+      display: block;
+      font-size: .8rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--dark);
+      margin-bottom: .4rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: .75rem 1rem;
+      border: 1.5px solid #ddd;
+      border-radius: 2px;
+      font-family: var(--font-body);
+      font-size: .95rem;
+      color: var(--dark);
+      background: var(--light);
+      transition: border-color .2s;
+      outline: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--orange);
+      background: var(--white);
+    }
+    .form-group textarea { height: 110px; resize: vertical; }
+
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+
+    .form-submit {
+      width: 100%;
+      background: var(--orange);
+      color: var(--white);
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      padding: .9rem;
+      border: none;
+      border-radius: 2px;
+      cursor: pointer;
+      transition: background .2s, transform .15s;
+    }
+    .form-submit:hover { background: #e07a0a; transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #2a2a2b;
+      padding: 4rem 5vw 2rem;
+      color: rgba(247,247,247,.6);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 3rem;
+      padding-bottom: 3rem;
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      margin-bottom: 2rem;
+    }
+
+    .footer-brand svg { height: 32px; width: auto; margin-bottom: 1rem; }
+    .footer-brand p { font-size: .875rem; line-height: 1.65; max-width: 260px; }
+
+    .footer-col h4 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: .8rem;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+      color: var(--orange);
+      margin-bottom: 1rem;
+    }
+    .footer-col ul { list-style: none; }
+    .footer-col li { margin-bottom: .5rem; }
+    .footer-col a {
+      color: rgba(247,247,247,.6);
+      text-decoration: none;
+      font-size: .875rem;
+      transition: color .2s;
+    }
+    .footer-col a:hover { color: var(--white); }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      font-size: .8rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    .social-links a {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(255,255,255,.15);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: rgba(247,247,247,.6);
+      text-decoration: none;
+      font-size: .75rem;
+      font-family: var(--font-display);
+      font-weight: 700;
+      letter-spacing: .05em;
+      transition: border-color .2s, color .2s, background .2s;
+    }
+    .social-links a:hover {
+      border-color: var(--orange);
+      color: var(--orange);
+      background: rgba(255,147,30,.08);
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+    @keyframes floatIcon {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-14px); }
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity .65s, transform .65s;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 1024px) {
+      .pillars-grid { grid-template-columns: repeat(2, 1fr); }
+      .sectors-grid { grid-template-columns: repeat(2, 1fr); }
+      .fleet-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    }
+
+    @media (max-width: 768px) {
+      #hero { grid-template-columns: 1fr; padding-top: 100px; padding-bottom: 5rem; }
+      .hero-visual { display: none; }
+      #about { grid-template-columns: 1fr; gap: 3rem; }
+      .services-grid { grid-template-columns: 1fr; }
+      #contact { grid-template-columns: 1fr; gap: 3rem; }
+      .pillars-grid { grid-template-columns: 1fr; }
+      .sectors-grid { grid-template-columns: 1fr; }
+      .fleet-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .customs-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    <!-- Inline landscape logo SVG (orange + dark) -->
+    <svg viewBox="0 0 324.81 107.78" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <style>.nl1{fill:#ff931e}.nl2{fill:#39393a}</style>
+      </defs>
+      <g>
+        <path class="nl1" d="M298.95,19.51c-1.87-2.39-4.64-4.62-7.42-5.97-2.63-1.27-5.52-1.88-8.6-1.82-3.08-.07-5.97.55-8.6,1.82-2.77,1.34-5.55,3.57-7.42,5.97-2.4,3.07-3.3,6.26-2.59,9.21.5,2.09,1.83,4.16,3.63,5.68,1.68,1.41,3.54,2.15,5.34,2.15.35,0,.69-.03,1.03-.08,1.34-.22,2.73-.88,3.8-1.8,1.35-1.17,2.09-2.69,2.09-4.28s-.64-3.15-1.79-4.31c-1.16-1.16-2.69-1.79-4.31-1.79v2.62c.92,0,1.79.36,2.46,1.03.66.66,1.03,1.54,1.03,2.46,0,1.06-.64,1.84-1.19,2.3-.69.6-1.66,1.06-2.51,1.2-1.33.22-2.89-.33-4.27-1.49-1.37-1.15-2.4-2.75-2.77-4.28-.65-2.72.78-5.3,2.1-6.99,1.64-2.09,4.06-4.05,6.49-5.22,2.26-1.09,4.76-1.61,7.43-1.55,2.67-.06,5.23.46,7.48,1.55,2.43,1.18,4.86,3.13,6.49,5.22,1.32,1.69,2.76,4.27,2.1,6.99-.37,1.54-1.4,3.14-2.77,4.28-1.18.99-2.5,1.53-3.68,1.53-.2,0-.4-.02-.59-.05-.85-.14-1.81-.6-2.51-1.2-.54-.47-1.19-1.25-1.19-2.3,0-.92.36-1.79,1.03-2.46.66-.66,1.54-1.03,2.46-1.03v-2.62c-1.62,0-3.15.64-4.31,1.79-1.16,1.16-1.79,2.69-1.79,4.31s.74,3.12,2.09,4.28c1.07.93,2.46,1.58,3.8,1.8.34.06.69.08,1.03.08,4.13,0,8.03-3.9,8.98-7.83.71-2.95-.19-6.14-2.59-9.21Z"/>
+        <path class="nl1" d="M267.13,88.37c1.85,2.36,4.58,4.56,7.32,5.89,2.59,1.25,5.45,1.86,8.48,1.79,3.04.06,5.89-.54,8.48-1.79,2.74-1.32,5.47-3.53,7.32-5.89,2.37-3.03,3.25-6.18,2.55-9.09-.5-2.07-1.8-4.11-3.59-5.6-1.65-1.39-3.49-2.12-5.27-2.12-.34,0-.68.03-1.02.08-1.33.22-2.69.86-3.75,1.78-1.33,1.15-2.06,2.65-2.06,4.23s.63,3.11,1.77,4.25c1.14,1.14,2.65,1.77,4.25,1.77v-2.59c-.91,0-1.77-.36-2.43-1.01-.65-.65-1.01-1.52-1.01-2.43,0-1.04.64-1.81,1.17-2.27.69-.59,1.64-1.05,2.48-1.18,1.31-.21,2.85.32,4.21,1.47,1.35,1.13,2.37,2.71,2.73,4.23.64,2.68-.77,5.23-2.08,6.9-1.62,2.07-4.01,3.99-6.41,5.15-2.23,1.08-4.69,1.59-7.33,1.53-2.64.06-5.16-.46-7.39-1.53-2.4-1.16-4.79-3.09-6.41-5.15-1.3-1.67-2.72-4.22-2.08-6.9.36-1.52,1.39-3.1,2.73-4.23,1.17-.98,2.46-1.51,3.63-1.51.2,0,.39.02.58.05.84.14,1.79.59,2.48,1.18.53.46,1.17,1.23,1.17,2.27,0,.91-.36,1.77-1.01,2.43-.65.65-1.52,1.01-2.43,1.01v2.59c1.6,0,3.11-.63,4.25-1.77,1.14-1.14,1.77-2.65,1.77-4.25s-.73-3.08-2.06-4.23c-1.06-.92-2.43-1.56-3.75-1.78-.34-.06-.68-.08-1.02-.08-4.07,0-7.93,3.85-8.86,7.73-.7,2.92.18,6.06,2.55,9.09Z"/>
+        <path class="nl1" d="M248.49,38.01c-2.36,1.85-4.56,4.58-5.89,7.32-1.25,2.59-1.86,5.45-1.79,8.48-.06,3.04.54,5.89,1.79,8.48,1.32,2.74,3.52,5.47,5.89,7.32,3.03,2.37,6.18,3.25,9.09,2.55,2.07-.5,4.11-1.8,5.6-3.59,1.39-1.65,2.12-3.49,2.12-5.27,0-.34-.03-.68-.08-1.02-.22-1.33-.86-2.69-1.78-3.75-1.15-1.33-2.65-2.06-4.23-2.06s-3.11.63-4.25,1.77c-1.14,1.14-1.77,2.65-1.77,4.25h2.58c0-.91.36-1.77,1.01-2.43.65-.65,1.52-1.01,2.43-1.01,1.04,0,1.81.64,2.27,1.17.59.69,1.05,1.63,1.18,2.48.21,1.31-.32,2.85-1.47,4.21-1.13,1.35-2.71,2.37-4.23,2.73-2.68.64-5.23-.77-6.89-2.08-2.07-1.62-3.99-4.01-5.15-6.41-1.08-2.23-1.59-4.69-1.53-7.33-.06-2.64.46-5.16,1.53-7.39,1.16-2.4,3.09-4.79,5.15-6.41,1.67-1.3,4.21-2.72,6.89-2.08,1.52.36,3.1,1.39,4.23,2.73.98,1.17,1.51,2.46,1.51,3.63,0,.2-.02.39-.05.58-.14.84-.59,1.79-1.18,2.48-.46.53-1.23,1.17-2.27,1.17-.91,0-1.77-.36-2.43-1.01-.65-.65-1.01-1.52-1.01-2.43h-2.58c0,1.6.63,3.11,1.77,4.25,1.14,1.14,2.65,1.77,4.25,1.77s3.08-.73,4.23-2.06c.91-1.06,1.56-2.43,1.78-3.75.06-.34.08-.68.08-1.02,0-4.07-3.85-7.93-7.72-8.86-2.91-.7-6.06.18-9.09,2.55Z"/>
+        <path class="nl1" d="M317.13,69.62c2.36-1.85,4.56-4.58,5.89-7.32,1.25-2.59,1.86-5.45,1.79-8.48.06-3.04-.54-5.89-1.79-8.48-1.32-2.74-3.52-5.47-5.89-7.32-3.03-2.37-6.18-3.25-9.09-2.55-2.07.5-4.11,1.8-5.6,3.59-1.39,1.65-2.12,3.49-2.12,5.27,0,.34.03.68.08,1.02.22,1.33.86,2.69,1.78,3.75,1.15,1.33,2.65,2.06,4.23,2.06s3.11-.63,4.25-1.77c1.14-1.14,1.77-2.65,1.77-4.25h-2.58c0,.91-.36,1.77-1.01,2.43-.65.65-1.52,1.01-2.43,1.01-1.04,0-1.81-.64-2.27-1.17-.59-.69-1.05-1.63-1.18-2.48-.21-1.31.32-2.85,1.47-4.21,1.13-1.35,2.71-2.37,4.23-2.73,2.68-.64,5.23.77,6.89,2.08,2.07,1.62,3.99,4.01,5.15,6.41,1.08,2.23,1.59,4.69,1.53,7.33.06,2.64-.46,5.16-1.53,7.39-1.16,2.4-3.09,4.79-5.15,6.41-1.67,1.3-4.21,2.72-6.89,2.08-1.52-.36-3.1-1.39-4.23-2.73-.98-1.17-1.51-2.46-1.51-3.63,0-.2.02-.39.05-.58.14-.84.59-1.79,1.18-2.48.46-.53,1.23-1.17,2.27-1.17.91,0,1.77.36,2.43,1.01.65.65,1.01,1.52,1.01,2.43h2.58c0-1.6-.63-3.11-1.77-4.25-1.14-1.14-2.65-1.77-4.25-1.77s-3.08.73-4.23,2.06c-.91,1.06-1.56,2.43-1.78,3.75-.06.34-.08.68-.08,1.02,0,4.07,3.85,7.93,7.72,8.86,2.91.7,6.06-.18,9.09-2.55Z"/>
+        <path class="nl1" d="M300.37,54.05c0-4.24-1.5-8.26-4.24-11.44l12.07-12.07-1.92-1.92-12.08,12.08h0c-3.17-2.72-7.17-4.2-11.39-4.2s-8.25,1.49-11.43,4.23l-12.09-12.11-1.93,1.92,12.09,12.11c-2.72,3.18-4.21,7.18-4.21,11.41s1.48,8.22,4.2,11.39l-12.08,12.08,1.92,1.92,12.07-12.07c3.18,2.74,7.2,4.24,11.44,4.24s8.21-1.48,11.39-4.19l12.01,12.03,1.93-1.92-12.01-12.02c2.75-3.18,4.24-7.2,4.24-11.45Z"/>
+        <rect class="nl1" x="220.44" width="3.77" height="107.78"/>
+        <polygon class="nl2" points="141.58 22.6 132.05 22.6 121.31 35.39 110.14 22.6 100.73 22.6 116.6 40.99 100.73 59.89 110.11 59.89 121.29 46.51 133.13 59.89 142.69 59.89 126.07 40.98 141.58 22.6"/>
+        <path class="nl2" d="M171.19,50.04c0-4.27-3.14-8.16-9.43-11.67l-2.66-1.5c-2.02-1.11-3.44-2.05-4.24-2.84-.8-.78-1.21-1.61-1.21-2.48,0-1,.44-1.81,1.33-2.41.89-.61,2.06-.91,3.5-.91,2.81,0,6.43,1.32,10.86,3.97v-7.3c-3.88-2.05-7.66-3.08-11.35-3.08s-6.45.91-8.71,2.72c-2.25,1.81-3.38,4.15-3.38,7.01,0,2.22.74,4.26,2.23,6.14,1.49,1.88,4.64,4.14,9.44,6.79,2.4,1.35,3.97,2.39,4.69,3.1.72.72,1.09,1.61,1.09,2.7s-.56,1.96-1.68,2.72c-1.12.76-2.46,1.14-4.02,1.14s-3.35-.45-5.55-1.36c-2.2-.91-4.35-2.09-6.45-3.55v7.95c2.65,1.27,4.85,2.14,6.6,2.61,1.75.47,3.74.71,5.98.71,3.8,0,6.9-.98,9.32-2.94,2.42-1.96,3.63-4.46,3.63-7.52Z"/>
+        <polygon class="nl2" points="196.41 21.92 191.47 21.92 191.28 21.92 189.04 21.92 183.54 21.92 177.38 21.92 177.38 22.86 177.38 26.23 177.38 27.19 183.54 27.19 183.54 27.17 183.72 27.17 183.72 55.25 183.54 55.25 183.54 55.22 177.38 55.22 177.38 56.19 177.38 59.56 177.38 60.5 178.59 60.5 183.54 60.5 191.47 60.5 196.42 60.5 197.63 60.5 197.63 59.56 197.63 56.19 197.63 55.22 191.47 55.22 191.47 27.19 197.63 27.19 197.63 26.23 197.63 22.86 197.63 21.92 196.41 21.92"/>
+        <polygon class="nl2" points="53.8 20.93 53.8 54.56 61.85 54.56 61.85 60.54 44.99 60.54 44.99 28.52 44.73 28.52 31.55 44.58 30.3 44.58 17.12 28.52 16.86 28.52 16.86 60.54 0 60.54 0 54.56 8.04 54.56 8.04 20.93 0 20.93 0 14.94 15.98 14.94 30.96 32.92 45.94 14.94 61.85 14.94 61.85 20.93 53.8 20.93"/>
+        <path class="nl2" d="M78.98,43.96h20.08c-.02-.82.02-1.25,0-2.07v-.94c0-5.81-1.49-10.44-4.47-13.9s-6.97-5.19-11.96-5.19-9.41,1.78-12.66,5.33c-3.25,3.55-4.88,8.17-4.88,13.84,0,3.78.77,7.11,2.31,9.99,1.54,2.88,3.6,5.17,6.17,6.87,2.57,1.7,5.93,2.56,10.08,2.56,3.03,0,5.68-.33,7.93-.97,2.26-.65,4.53-1.73,6.82-3.24v-7.22c-4.15,3.03-8.69,4.54-13.6,4.54-3.52,0-6.4-1.05-8.63-3.16-1.77-1.67-2.89-3.81-3.38-6.4.23-.01.49-.04.64-.04,1.85.03,3.7,0,5.54,0ZM76.06,30.66c1.71-1.59,3.9-2.39,6.58-2.39s4.81.8,6.39,2.39c1.58,1.6,2.47,3.87,2.66,6.81h-18.97c.52-2.95,1.63-5.22,3.34-6.81Z"/>
+      </g>
+    </svg>
+  </a>
+
+  <ul class="nav-links">
+    <li><a href="#about">Nosotros</a></li>
+    <li><a href="#services">Servicios</a></li>
+    <li><a href="#sectors">Sectores</a></li>
+    <li><a href="#fleet">Flota</a></li>
+    <li><a href="#contact" class="nav-cta">Contacto</a></li>
+  </ul>
+
+  <button class="hamburger" aria-label="Menú">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content">
+    <div class="hero-eyebrow">Plataforma Logística Internacional</div>
+    <h1 class="hero-title">
+      Logística
+      <span class="accent">de verdad</span>
+    </h1>
+    <p class="hero-subtitle">Importación, exportación y transporte de mercancías a nivel nacional e internacional — con transparencia y profesionalismo.</p>
+    <div class="hero-actions">
+      <a href="#services" class="btn-primary">Nuestros Servicios</a>
+      <a href="#contact" class="btn-outline">Contactar</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="hero-icon-wrap">
+      <!-- Portrait logo for hero (white version) -->
+      <svg viewBox="0 0 233.78 203.15" xmlns="http://www.w3.org/2000/svg">
+        <defs><style>.hl1{fill:#FF931E}.hl2{fill:#ffffff}</style></defs>
+        <g>
+          <g>
+            <polygon class="hl2" points="167.48 114.39 156.2 114.39 143.49 129.52 130.28 114.39 119.16 114.39 137.93 136.15 119.16 158.5 130.25 158.5 143.48 142.68 157.48 158.5 168.79 158.5 149.13 136.13 167.48 114.39"/>
+            <path class="hl2" d="M202.5,146.85c0-5.05-3.72-9.65-11.15-13.81l-3.15-1.77c-2.39-1.31-4.06-2.43-5.02-3.36-.95-.93-1.43-1.9-1.43-2.93,0-1.18.52-2.14,1.58-2.86,1.05-.72,2.43-1.08,4.14-1.08,3.33,0,7.61,1.57,12.84,4.7v-8.63c-4.59-2.43-9.06-3.64-13.43-3.64s-7.63,1.07-10.3,3.21c-2.67,2.14-4,4.91-4,8.3,0,2.62.88,5.04,2.64,7.26,1.76,2.22,5.48,4.9,11.17,8.03,2.84,1.6,4.69,2.82,5.55,3.67.86.85,1.28,1.91,1.28,3.19s-.66,2.32-1.99,3.21c-1.33.9-2.91,1.34-4.75,1.34s-3.97-.54-6.57-1.61c-2.6-1.07-5.15-2.47-7.63-4.2v9.4c3.13,1.5,5.74,2.53,7.8,3.09,2.07.56,4.43.84,7.08.84,4.49,0,8.17-1.16,11.03-3.47,2.86-2.32,4.29-5.28,4.29-8.89Z"/>
+            <polygon class="hl2" points="232.34 113.58 226.5 113.58 226.27 113.58 223.62 113.58 217.11 113.58 209.82 113.58 209.82 114.7 209.82 118.69 209.82 119.82 217.11 119.82 217.11 119.8 217.33 119.8 217.33 153.01 217.11 153.01 217.11 152.98 209.82 152.98 209.82 154.12 209.82 158.11 209.82 159.22 211.26 159.22 217.11 159.22 226.5 159.22 232.35 159.22 233.78 159.22 233.78 158.11 233.78 154.12 233.78 152.98 226.5 152.98 226.5 119.82 233.78 119.82 233.78 118.68 233.78 114.7 233.78 113.58 232.34 113.58"/>
+            <polygon class="hl2" points="63.65 112.41 63.65 152.19 73.17 152.19 73.17 159.27 53.22 159.27 53.22 121.39 52.91 121.39 37.32 140.39 35.85 140.39 20.25 121.39 19.94 121.39 19.94 159.27 0 159.27 0 152.19 9.51 152.19 9.51 112.41 0 112.41 0 105.33 18.9 105.33 36.62 126.6 54.34 105.33 73.17 105.33 73.17 112.41 63.65 112.41"/>
+            <path class="hl2" d="M93.43,139.66h23.76c-.03-.97.02-1.48,0-2.44v-1.11c0-6.87-1.76-12.35-5.28-16.45-3.52-4.09-8.24-6.14-14.15-6.14s-11.13,2.1-14.98,6.31c-3.85,4.2-5.77,9.66-5.77,16.37,0,4.48.91,8.42,2.74,11.82,1.83,3.4,4.26,6.11,7.3,8.13,3.03,2.02,7.01,3.02,11.92,3.02,3.59,0,6.71-.39,9.38-1.15,2.67-.77,5.36-2.04,8.07-3.84v-8.54c-4.91,3.58-10.28,5.37-16.09,5.37-4.17,0-7.57-1.25-10.2-3.74-2.09-1.98-3.42-4.5-3.99-7.57.28-.02.58-.05.75-.05,2.19.04,4.37,0,6.55,0Z"/>
+          </g>
+          <!-- Orange compass icon -->
+          <path class="hl1" d="M141.22,9.07c-2.18-2.79-5.41-5.39-8.64-6.95C129.51.64,126.14-.07,122.55,0c-3.59-.08-6.96.64-10.02,2.12-3.23,1.56-6.46,4.16-8.64,6.95-2.8,3.58-3.84,7.29-3.02,10.74.59,2.44,2.13,4.85,4.23,6.62,1.95,1.64,4.13,2.51,6.23,2.51.4,0,.8-.03,1.2-.1,1.57-.25,3.18-1.02,4.43-2.1,1.57-1.36,2.44-3.13,2.44-4.99s-.74-3.67-2.09-5.02c-1.35-1.35-3.13-2.09-5.02-2.09v3.05c1.07,0,2.09.43,2.86,1.2.77.77,1.2,1.79,1.2,2.86,0,1.23-.75,2.14-1.38,2.68-.81.7-1.93,1.24-2.93,1.4-1.55.25-3.36-.38-4.98-1.73-1.59-1.33-2.8-3.2-3.23-4.99-.76-3.16.91-6.17,2.45-8.14,1.91-2.44,4.74-4.71,7.57-6.08,2.63-1.27,5.54-1.88,8.65-1.81,3.11-.07,6.09.54,8.72,1.81,2.83,1.37,5.66,3.64,7.57,6.08,1.54,1.97,3.21,4.98,2.45,8.14-.43,1.79-1.64,3.66-3.23,4.99-1.38,1.16-2.91,1.79-4.29,1.79-.23,0-.46-.02-.69-.05-.99-.16-2.12-.7-2.93-1.4-.63-.54-1.38-1.45-1.38-2.68,0-1.07.43-2.09,1.2-2.86.77-.77,1.79-1.2,2.86-1.2v-3.05c-1.89,0-3.67.74-5.02,2.09-1.35,1.35-2.09,3.13-2.09,5.02s.87,3.63,2.44,4.99c1.25,1.08,2.86,1.85,4.43,2.1.4.07.8.1,1.2.1,4.81,0,9.36-4.54,10.46-9.12.83-3.44-.22-7.15-3.02-10.74Z"/>
+          <path class="hl1" d="M104.13,89.33c2.15,2.75,5.34,5.32,8.53,6.86,3.02,1.46,6.35,2.16,9.89,2.09,3.54.08,6.87-.63,9.89-2.09,3.19-1.54,6.38-4.11,8.53-6.86,2.76-3.54,3.79-7.2,2.98-10.6-.58-2.41-2.1-4.79-4.18-6.53-1.93-1.62-4.07-2.47-6.15-2.47-.4,0-.79.03-1.19.1-1.55.25-3.14,1.01-4.37,2.07-1.55,1.34-2.41,3.09-2.41,4.93s.73,3.63,2.06,4.96c1.33,1.33,3.09,2.06,4.96,2.06v-3.01c-1.06,0-2.07-.42-2.83-1.18-.76-.76-1.18-1.77-1.18-2.83,0-1.22.74-2.11,1.36-2.65.8-.69,1.91-1.22,2.89-1.38,1.53-.25,3.32.38,4.91,1.71,1.57,1.32,2.76,3.16,3.19,4.93.75,3.12-.9,6.09-2.42,8.04-1.88,2.41-4.68,4.65-7.47,6.01-2.6,1.26-5.47,1.86-8.54,1.79-3.07.07-6.01-.53-8.61-1.79-2.8-1.35-5.59-3.6-7.47-6.01-1.52-1.94-3.17-4.91-2.42-8.04.42-1.77,1.62-3.61,3.19-4.93,1.36-1.14,2.87-1.77,4.24-1.77.23,0,.46.02.68.05.98.16,2.09.69,2.89,1.38.62.54,1.36,1.43,1.36,2.65,0,1.06-.42,2.07-1.18,2.83-.76.76-1.77,1.18-2.83,1.18v3.01c1.87,0,3.63-.73,4.96-2.06,1.33-1.33,2.06-3.09,2.06-4.96s-.85-3.59-2.41-4.93c-1.23-1.07-2.83-1.82-4.37-2.07-.4-.06-.79-.1-1.19-.1-4.75,0-9.24,4.48-10.33,9.01-.82,3.4.21,7.06,2.98,10.6Z"/>
+          <path class="hl1" d="M82.4,30.64c-2.75,2.15-5.32,5.34-6.86,8.53-1.46,3.02-2.16,6.35-2.09,9.89-.08,3.54.63,6.87,2.09,9.89,1.54,3.19,4.11,6.38,6.86,8.53,3.53,2.76,7.2,3.79,10.59,2.98,2.41-.58,4.79-2.1,6.53-4.18,1.62-1.93,2.47-4.07,2.47-6.15,0-.4-.03-.79-.1-1.19-.25-1.55-1.01-3.14-2.07-4.37-1.34-1.55-3.09-2.41-4.93-2.41s-3.63.73-4.96,2.06c-1.33,1.33-2.06,3.09-2.06,4.96h3.01c0-1.06.42-2.06,1.18-2.83.76-.76,1.77-1.18,2.83-1.18,1.22,0,2.11.74,2.65,1.36.69.8,1.22,1.91,1.38,2.89.25,1.53-.38,3.32-1.71,4.91-1.32,1.57-3.16,2.76-4.93,3.19-3.12.75-6.09-.9-8.04-2.42-2.41-1.88-4.65-4.68-6-7.47-1.26-2.6-1.86-5.47-1.79-8.54-.07-3.07.53-6.01,1.79-8.61,1.35-2.79,3.6-5.59,6-7.47,1.94-1.52,4.91-3.17,8.04-2.42,1.77.42,3.61,1.62,4.93,3.19,1.14,1.36,1.77,2.87,1.77,4.23,0,.23-.02.46-.05.68-.16.98-.69,2.09-1.38,2.89-.54.62-1.43,1.36-2.65,1.36-1.06,0-2.06-.42-2.83-1.18-.76-.76-1.18-1.77-1.18-2.83h-3.01c0,1.87.73,3.63,2.06,4.96,1.33,1.33,3.09,2.06,4.96,2.06s3.59-.85,4.93-2.41c1.07-1.23,1.82-2.83,2.07-4.37.06-.4.1-.79.1-1.19,0-4.75-4.48-9.24-9-10.32-3.4-.82-7.06.21-10.59,2.98Z"/>
+          <path class="hl1" d="M162.4,67.47c2.75-2.15,5.32-5.34,6.86-8.53,1.46-3.02,2.16-6.35,2.09-9.89.08-3.54-.63-6.87-2.09-9.89-1.54-3.19-4.11-6.38-6.86-8.53-3.53-2.76-7.2-3.79-10.59-2.98-2.41.58-4.79,2.1-6.53,4.18-1.62,1.93-2.47,4.07-2.47,6.15,0,.4.03.79.1,1.19.25,1.55,1.01,3.14,2.07,4.37,1.34,1.55,3.09,2.41,4.93,2.41s3.63-.73,4.96-2.06c1.33-1.33,2.06-3.09,2.06-4.96h-3.01c0,1.06-.42,2.06-1.18,2.83-.76.76-1.77,1.18-2.83,1.18-1.22,0-2.11-.74-2.65-1.36-.69-.8-1.22-1.91-1.38-2.89-.25-1.53.38-3.32,1.71-4.91,1.32-1.57,3.16-2.76,4.93-3.19,3.12-.75,6.09.9,8.04,2.42,2.41,1.88,4.65,4.68,6,7.47,1.26,2.6,1.86,5.47,1.79,8.54.07,3.07-.53,6.01-1.79,8.61-1.35,2.79-3.6,5.59-6,7.47-1.94,1.52-4.91,3.17-8.04,2.42-1.77-.42-3.61-1.62-4.93-3.19-1.14-1.36-1.77-2.87-1.77-4.23,0-.23.02-.46.05-.68.16-.98.69-2.09,1.38-2.89.54-.62,1.43-1.36,2.65-1.36,1.06,0,2.06.42,2.83,1.18.76.76,1.18,1.77,1.18,2.83h3.01c0-1.87-.73-3.63-2.06-4.96-1.33-1.33-3.09-2.06-4.96-2.06s-3.59.85-4.93,2.41c-1.07,1.23-1.82,2.83-2.07,4.37-.06.4-.1.79-.1,1.19,0,4.75,4.48,9.24,9,10.32,3.4.82,7.06-.21,10.59-2.98Z"/>
+          <path class="hl1" d="M142.86,49.33c0-4.95-1.74-9.63-4.94-13.34l14.07-14.07-2.24-2.24-14.08,14.08h0c-3.7-3.16-8.36-4.89-13.28-4.89s-9.61,1.74-13.32,4.93l-14.09-14.11-2.24,2.24,14.09,14.11c-3.17,3.7-4.91,8.37-4.91,13.3s1.73,9.58,4.89,13.28l-14.08,14.08,2.24,2.24,14.07-14.07c3.71,3.2,8.39,4.94,13.34,4.94s9.57-1.72,13.27-4.89l14,14.02,2.24-2.24-13.99-14.01c3.2-3.71,4.95-8.39,4.95-13.34Z"/>
+          <!-- tagline lines -->
+          <rect class="hl1" x=".52" y="179.57" width="45.54" height="2.56"/>
+          <rect class="hl1" x="207.43" y="179.57" width="26.35" height="2.56"/>
+          <!-- tagline text in white -->
+          <path class="hl2" d="M54.31,168.24h2.54v22.83h-2.54v-22.83Z"/>
+          <path class="hl2" d="M63.17,183.07v-.06c0-4.6,3.74-8.44,8.92-8.44s8.89,3.82,8.89,8.38v.06c0,4.6-3.8,8.44-8.96,8.44s-8.86-3.82-8.86-8.38ZM78.37,183.07v-.06c0-3.47-2.74-6.32-6.35-6.32s-6.25,2.85-6.25,6.25v.06c0,3.47,2.71,6.29,6.31,6.29s6.28-2.85,6.28-6.22Z"/>
+          <path class="hl2" d="M109.52,174.9h2.55v16.17h-2.55v-16.17ZM112.93,167.93l2.64,1.16-3.77,3.38h-1.98l3.11-4.53Z"/>
+          <path class="hl2" d="M118.88,189.01l1.29-1.72c1.85,1.34,3.9,2.06,5.92,2.06s3.54-.97,3.54-2.56v-.06c0-1.6-2.02-2.25-4.26-2.85-2.64-.75-5.65-1.56-5.65-4.57v-.06c0-2.78,2.45-4.63,5.82-4.63,2.12,0,4.4.69,6.15,1.78l-1.16,1.81c-1.59-.97-3.37-1.56-5.06-1.56-2.02,0-3.31,1-3.31,2.35v.06c0,1.53,2.12,2.13,4.4,2.78,2.64.75,5.49,1.72,5.49,4.63v.06c0,3.06-2.68,4.85-6.08,4.85-2.48,0-5.12-.91-7.07-2.38Z"/>
+          <path class="hl2" d="M139.64,186.79v-9.76h-2.38v-2.13h2.38v-4.88h2.54v4.88h5.42v2.13h-5.42v9.44c0,2,1.16,2.69,2.88,2.69.89,0,1.59-.16,2.48-.56v2.06c-.89.47-1.85.69-3.07.69-2.78,0-4.83-1.28-4.83-4.57Z"/>
+          <path class="hl2" d="M154.48,168.71h2.91v2.66h-2.91v-2.66ZM154.64,174.9h2.55v16.17h-2.55v-16.17Z"/>
+          <path class="hl2" d="M164.36,183.07v-.06c0-4.6,3.74-8.44,8.76-8.44,3.24,0,5.22,1.25,6.84,2.88l-1.69,1.69c-1.36-1.34-2.84-2.44-5.19-2.44-3.47,0-6.11,2.75-6.11,6.25v.06c0,3.5,2.71,6.29,6.28,6.29,2.21,0,3.87-1.03,5.22-2.41l1.62,1.44c-1.72,1.85-3.77,3.13-6.97,3.13-5.02,0-8.76-3.85-8.76-8.38Z"/>
+          <path class="hl2" d="M185.32,186.38v-.06c0-3.38,2.97-5.22,7.3-5.22,2.21,0,3.7.28,5.26.69v-.56c0-2.91-1.88-4.41-5.09-4.41-2.02,0-3.6.47-5.19,1.19l-.76-1.97c1.88-.84,3.7-1.34,6.21-1.34s4.26.59,5.52,1.78c1.16,1.09,1.75,2.69,1.75,4.72v9.88h-2.45v-2.44c-1.19,1.47-3.14,2.78-6.18,2.78s-6.38-1.69-6.38-5.04ZM197.91,185.13v-1.56c-1.29-.34-2.91-.69-5.02-.69-3.21,0-4.99,1.31-4.99,3.35v.06c0,2.03,2.02,3.22,4.3,3.22,3.17,0,5.72-1.81,5.72-4.38Z"/>
+          <path class="hl2" d="M95.78,191.92c1.69.05,3.28.34,4.68,1.29,1.56,1.06,2.07,2.76,1.78,4.6-.32,2.07-1.55,3.44-3.4,4.33-2.15,1.04-4.71,1.11-7.08.96-1.28-.08-2.46-.35-3.6-.83-2.15-.91-3.28-2.99-2.74-5.31.35-1.51,1.39-2.76,2.61-3.66-2-.99-2.41-2.58-1.82-4.62.27-.92.84-1.64,1.48-2.41-.95-1.16-1.34-2.56-1.27-4.05.1-2.31.53-3.63,2.31-5.21,1.09-.97,2.51-1.35,3.97-1.53,1.16-.14,2.24.23,3.41.25l6.05.09-.06,2.13h-3.27c.72.6,1.06,1.35,1.32,2.2.57,1.85.33,3.91-.61,5.6-.28.51-.64.87-1.03,1.27-1.69,1.75-4.82,2.23-7.06,1.62-.83-.22-1.67-.42-2.24-1.03-.95.94-1.53,2.74-.17,3.61.78.5,1.67.58,2.6.54.55-.02,1.12.09,1.64.1l2.49.07Z"/>
+        </g>
+      </svg>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item">
+        <span class="stat-num">3</span>
+        <span class="stat-label">Aduanas marítimas</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">4</span>
+        <span class="stat-label">Cruces terrestres</span>
+      </div>
+      <div class="stat-item">
+        <span class="stat-num">6</span>
+        <span class="stat-label">Aeropuertos</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section id="pillars">
+  <div class="section-header reveal">
+    <div class="section-label">Nuestra misión</div>
+    <h2 class="section-title">Lo que nos<br>mueve cada día</h2>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card reveal">
+      <div class="pillar-number">01</div>
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2 0V4.07c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93z"/></svg>
+      </div>
+      <div class="pillar-name">Satisfacer</div>
+      <p class="pillar-desc">Las necesidades de nuestros clientes a través de consultoría, coordinación y transparencia de información durante el proceso logístico.</p>
+    </div>
+    <div class="pillar-card reveal">
+      <div class="pillar-number">02</div>
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+      </div>
+      <div class="pillar-name">Conectar</div>
+      <p class="pillar-desc">A proveedores mexicanos con empresas compradoras fuera de México, cubriendo la demanda de los mercados internacionales.</p>
+    </div>
+    <div class="pillar-card reveal">
+      <div class="pillar-number">03</div>
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93s-3.05 7.44-7 7.93v2.02c5.05-.5 9-4.76 9-9.95S18.05 2.55 13 2.05zM11 2.05C5.95 2.55 2 6.81 2 12s3.95 9.45 9 9.95v-2.02C7.05 19.44 4 16.08 4 12s3.05-7.44 7-7.93V2.05zM12 6l-5 5h3v6h4v-6h3l-5-5z"/></svg>
+      </div>
+      <div class="pillar-name">Impulsar</div>
+      <p class="pillar-desc">El crecimiento de nuestros clientes a través de una logística adecuada, puntual y adaptada a sus necesidades específicas.</p>
+    </div>
+    <div class="pillar-card reveal">
+      <div class="pillar-number">04</div>
+      <div class="pillar-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93-2.67-1.14-5-4.43-5-7.93V7.18L12 5z"/></svg>
+      </div>
+      <div class="pillar-name">Incentivar</div>
+      <p class="pillar-desc">El comercio nacional mediante el tránsito de mercancías de importación y exportación en todos los puntos de México.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="reveal">
+    <div class="section-label">¿Quiénes somos?</div>
+    <h2 class="section-title">Plataforma logística<br>internacional</h2>
+    <p class="about-body">MexSí es una plataforma logística y de comercialización de productos a nivel internacional. Apoyamos a personas, empresas e instituciones en sus procesos de importación, exportación y transporte de mercancías tanto a nivel nacional como internacional.</p>
+    <a href="#contact" class="btn-primary">Hablar con un experto</a>
+  </div>
+  <div class="about-visual reveal">
+    <div class="about-card">
+      <div class="customs-grid">
+        <div class="customs-col">
+          <h4>Marítimas</h4>
+          <ul>
+            <li>Manzanillo</li>
+            <li>Lázaro Cárdenas</li>
+            <li>Guaymas</li>
+            <li>Altamira</li>
+            <li>Veracruz</li>
+          </ul>
+        </div>
+        <div class="customs-col">
+          <h4>Terrestres</h4>
+          <ul>
+            <li>Laredo</li>
+            <li>Colombia</li>
+            <li>San Diego</li>
+            <li>Ciudad Hidalgo</li>
+          </ul>
+        </div>
+        <div class="customs-col">
+          <h4>Aéreas</h4>
+          <ul>
+            <li>AICM</li>
+            <li>AIFA</li>
+            <li>Monterrey</li>
+            <li>Guadalajara</li>
+            <li>Querétaro</li>
+            <li>Toluca</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header reveal">
+    <div class="section-label">Lo que hacemos</div>
+    <h2 class="section-title">Nuestros servicios</h2>
+  </div>
+  <div class="services-grid">
+    <div class="service-card reveal">
+      <div class="service-icon orange">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF931E" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+      </div>
+      <div class="service-content">
+        <h3>Importación</h3>
+        <p>Coordinamos el proceso completo de ingreso de mercancías al territorio nacional, gestionando trámites aduaneros, permisos y logística de entrega.</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon teal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#51A3A3" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+      </div>
+      <div class="service-content">
+        <h3>Exportación</h3>
+        <p>Conectamos a proveedores mexicanos con compradores internacionales, manejando documentación, normas y tiempos de entrega con precisión.</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon lavender">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#8D80AD" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+      </div>
+      <div class="service-content">
+        <h3>Transporte Nacional</h3>
+        <p>Flota propia con unidades secas, refrigeradas, plataformas y HAZMAT para cubrir rutas en todo el territorio mexicano con seguridad y puntualidad.</p>
+      </div>
+    </div>
+    <div class="service-card reveal">
+      <div class="service-icon orange">
+        <svg viewBox="0 0 24 24" fill="none" stroke="#FF931E" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </div>
+      <div class="service-content">
+        <h3>Asesoría y Capacitación</h3>
+        <p>Amplio historial en consultoría de comercio exterior. Te ayudamos a manejar de forma más efectiva y segura tus transacciones internacionales.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTORS -->
+<section id="sectors">
+  <div class="section-header reveal">
+    <div class="section-label">Industrias</div>
+    <h2 class="section-title">Sectores en los<br>que operamos</h2>
+  </div>
+  <div class="sectors-grid">
+    <div class="sector-card reveal">
+      <div class="sector-top orange"></div>
+      <div class="sector-body">
+        <h3>Alimentos y Bebidas</h3>
+        <ul>
+          <li>Carne congelada</li>
+          <li>Frutas refrigeradas</li>
+          <li>Café en grano</li>
+          <li>Miel de abeja</li>
+          <li>Flor de Jamaica</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sector-card reveal">
+      <div class="sector-top teal"></div>
+      <div class="sector-body">
+        <h3>Maquinaria</h3>
+        <ul>
+          <li>Maquinaria médica</li>
+          <li>Maquinaria industrial</li>
+          <li>Líneas de producción</li>
+          <li>Bombas</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sector-card reveal">
+      <div class="sector-top lavender"></div>
+      <div class="sector-body">
+        <h3>Manufactura</h3>
+        <ul>
+          <li>Textiles</li>
+          <li>Papel</li>
+          <li>Calzado</li>
+          <li>Plásticos</li>
+          <li>Juguetes</li>
+        </ul>
+      </div>
+    </div>
+    <div class="sector-card reveal">
+      <div class="sector-top dark"></div>
+      <div class="sector-body">
+        <h3>Electrónicos</h3>
+        <ul>
+          <li>Equipo de cómputo</li>
+          <li>Refacciones electrónicas</li>
+          <li>Televisores</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET -->
+<section id="fleet">
+  <div class="section-header reveal">
+    <div class="section-label">Capacidad operativa</div>
+    <h2 class="section-title">Nuestras unidades</h2>
+  </div>
+  <div class="fleet-grid">
+    <div class="fleet-card reveal">
+      <div class="fleet-card-title">Contenedores</div>
+      <ul>
+        <li>Porta contenedores 20 ft</li>
+        <li>Porta contenedores 40 ft</li>
+      </ul>
+    </div>
+    <div class="fleet-card reveal">
+      <div class="fleet-card-title">Cajas y Plataformas</div>
+      <ul>
+        <li>Cajas secas 40″</li>
+        <li>Cajas secas 48″</li>
+        <li>Plataformas 53″</li>
+      </ul>
+    </div>
+    <div class="fleet-card reveal">
+      <div class="fleet-card-title">Unidades Pequeñas</div>
+      <ul>
+        <li>Nissan 1.5 Ton / 3.5 Ton</li>
+        <li>Rabón</li>
+        <li>Torton</li>
+      </ul>
+    </div>
+    <div class="fleet-card reveal">
+      <div class="fleet-card-title">Especiales</div>
+      <ul>
+        <li>Unidades refrigeradas</li>
+        <li>Permiso HAZMAT</li>
+        <li>Capacidad de sobrepeso</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-info reveal">
+    <h2>Hablemos de<br>tu logística</h2>
+    <p>Cuéntanos sobre tu operación y te ayudamos a encontrar la solución más eficiente para tu importación, exportación o transporte.</p>
+    <div class="contact-offices">
+      <div class="office-card">
+        <h4>Monterrey</h4>
+        <p><a href="tel:+528118797160">+52 81 1879 7160</a></p>
+      </div>
+      <div class="office-card">
+        <h4>Veracruz</h4>
+        <p><a href="tel:+522291890611">+52 229 189 0611</a></p>
+      </div>
+      <div class="office-card">
+        <h4>Email</h4>
+        <p><a href="mailto:contacto@mexsi.org">contacto@mexsi.org</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="contact-form reveal">
+    <div class="form-title">Envíanos un mensaje</div>
+    <div class="form-row">
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" placeholder="Tu nombre" />
+      </div>
+      <div class="form-group">
+        <label>Empresa</label>
+        <input type="text" placeholder="Nombre de la empresa" />
+      </div>
+    </div>
+    <div class="form-group">
+      <label>Email</label>
+      <input type="email" placeholder="correo@empresa.com" />
+    </div>
+    <div class="form-group">
+      <label>Servicio de interés</label>
+      <select>
+        <option value="">Selecciona un servicio</option>
+        <option>Importación</option>
+        <option>Exportación</option>
+        <option>Transporte Nacional</option>
+        <option>Asesoría / Capacitación</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Mensaje</label>
+      <textarea placeholder="Cuéntanos sobre tu operación..."></textarea>
+    </div>
+    <button class="form-submit">Enviar mensaje →</button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <svg viewBox="0 0 324.81 107.78" xmlns="http://www.w3.org/2000/svg">
+        <defs><style>.fl1{fill:#ff931e}.fl2{fill:rgba(247,247,247,0.7)}</style></defs>
+        <rect class="fl1" x="220.44" width="3.77" height="107.78"/>
+        <polygon class="fl2" points="141.58 22.6 132.05 22.6 121.31 35.39 110.14 22.6 100.73 22.6 116.6 40.99 100.73 59.89 110.11 59.89 121.29 46.51 133.13 59.89 142.69 59.89 126.07 40.98 141.58 22.6"/>
+        <path class="fl2" d="M171.19,50.04c0-4.27-3.14-8.16-9.43-11.67l-2.66-1.5c-2.02-1.11-3.44-2.05-4.24-2.84-.8-.78-1.21-1.61-1.21-2.48,0-1,.44-1.81,1.33-2.41.89-.61,2.06-.91,3.5-.91,2.81,0,6.43,1.32,10.86,3.97v-7.3c-3.88-2.05-7.66-3.08-11.35-3.08s-6.45.91-8.71,2.72c-2.25,1.81-3.38,4.15-3.38,7.01,0,2.22.74,4.26,2.23,6.14,1.49,1.88,4.64,4.14,9.44,6.79,2.4,1.35,3.97,2.39,4.69,3.1.72.72,1.09,1.61,1.09,2.7s-.56,1.96-1.68,2.72c-1.12.76-2.46,1.14-4.02,1.14s-3.35-.45-5.55-1.36c-2.2-.91-4.35-2.09-6.45-3.55v7.95c2.65,1.27,4.85,2.14,6.6,2.61,1.75.47,3.74.71,5.98.71,3.8,0,6.9-.98,9.32-2.94,2.42-1.96,3.63-4.46,3.63-7.52Z"/>
+        <path class="fl1" d="M300.37,54.05c0-4.24-1.5-8.26-4.24-11.44l12.07-12.07-1.92-1.92-12.08,12.08h0c-3.17-2.72-7.17-4.2-11.39-4.2s-8.25,1.49-11.43,4.23l-12.09-12.11-1.93,1.92,12.09,12.11c-2.72,3.18-4.21,7.18-4.21,11.41s1.48,8.22,4.2,11.39l-12.08,12.08,1.92,1.92,12.07-12.07c3.18,2.74,7.2,4.24,11.44,4.24s8.21-1.48,11.39-4.19l12.01,12.03,1.93-1.92-12.01-12.02c2.75-3.18,4.24-7.2,4.24-11.45Z"/>
+      </svg>
+      <p>Plataforma logística y de comercialización de productos a nivel internacional. Impulsamos el comercio de México con el mundo.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navegación</h4>
+      <ul>
+        <li><a href="#about">Nosotros</a></li>
+        <li><a href="#services">Servicios</a></li>
+        <li><a href="#sectors">Sectores</a></li>
+        <li><a href="#fleet">Flota</a></li>
+        <li><a href="#contact">Contacto</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Servicios</h4>
+      <ul>
+        <li><a href="#services">Importación</a></li>
+        <li><a href="#services">Exportación</a></li>
+        <li><a href="#services">Transporte</a></li>
+        <li><a href="#services">Capacitación</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <ul>
+        <li><a href="tel:+528118797160">MTY: +52 81 1879 7160</a></li>
+        <li><a href="tel:+522291890611">VER: +52 229 189 0611</a></li>
+        <li><a href="mailto:contacto@mexsi.org">contacto@mexsi.org</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>Copyright ® 2026 – MexSí. Todos los derechos reservados.</span>
+    <div class="social-links">
+      <a href="https://facebook.com/MexsiOficial" target="_blank">FB</a>
+      <a href="https://instagram.com/MexsiOficial" target="_blank">IG</a>
+      <a href="https://www.youtube.com/channel/UCzscczoX_JEtgrVzJd9kGzg" target="_blank">YT</a>
+    </div>
+  </div>
+</footer>
+
+<script src="{{ url_for('static', filename='JS/main.js') }}"></script>
+
+</body>
+</html>

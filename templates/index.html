@@ -1,0 +1,284 @@
+{% extends "layout.html" %}
+
+
+{% block body %}
+
+    <!-- HERO -->
+    <section id="hero">
+    <div class="hero-content">
+        <div class="hero-eyebrow">Plataforma Logística Internacional</div>
+        <h1 class="hero-title">
+        Dónde tu operación encuentra
+        <span class="accent">tierra firme</span>
+        </h1>
+        <p class="hero-subtitle">Importación, exportación y transporte de mercancías a nivel nacional e internacional — con transparencia y profesionalismo.</p>
+        <div class="hero-actions">
+        <a href="#services" class="btn-primary">Nuestros Servicios</a>
+        <a href="#contact" class="btn-outline">Contactar</a>
+        </div>
+    </div>
+
+    <div class="hero-visual">
+        <div class="hero-icon-wrap">
+        <!-- Portrait logo for hero (white version) -->
+        <img src="{{ url_for('static', filename='SVG/icon.svg') }}" alt="simbolo de MexSí"/>
+        </div>
+        <div class="hero-stats">
+        <div class="stat-item">
+            <span class="stat-num">3</span>
+            <span class="stat-label">Aduanas marítimas</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">4</span>
+            <span class="stat-label">Cruces terrestres</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">6</span>
+            <span class="stat-label">Aeropuertos</span>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- PILLARS -->
+    <section id="pillars">
+    <div class="section-header reveal">
+        <div class="section-label">Nuestra misión</div>
+        <h2 class="section-title">Lo que nos<br>mueve cada día</h2>
+    </div>
+    <div class="pillars-grid">
+        <div class="pillar-card reveal">
+        <div class="pillar-number">01</div>
+        <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.94-.49-7-3.85-7-7.93s3.06-7.44 7-7.93v15.86zm2 0V4.07c3.94.49 7 3.85 7 7.93s-3.06 7.44-7 7.93z"/></svg>
+        </div>
+        <div class="pillar-name">Satisfacer</div>
+        <p class="pillar-desc">Las necesidades de nuestros clientes a través de consultoría, coordinación y transparencia de información durante el proceso logístico.</p>
+        </div>
+        <div class="pillar-card reveal">
+        <div class="pillar-number">02</div>
+        <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+        </div>
+        <div class="pillar-name">Conectar</div>
+        <p class="pillar-desc">A proveedores mexicanos con empresas compradoras fuera de México, cubriendo la demanda de los mercados internacionales.</p>
+        </div>
+        <div class="pillar-card reveal">
+        <div class="pillar-number">03</div>
+        <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93s-3.05 7.44-7 7.93v2.02c5.05-.5 9-4.76 9-9.95S18.05 2.55 13 2.05zM11 2.05C5.95 2.55 2 6.81 2 12s3.95 9.45 9 9.95v-2.02C7.05 19.44 4 16.08 4 12s3.05-7.44 7-7.93V2.05zM12 6l-5 5h3v6h4v-6h3l-5-5z"/></svg>
+        </div>
+        <div class="pillar-name">Impulsar</div>
+        <p class="pillar-desc">El crecimiento de nuestros clientes a través de una logística adecuada, puntual y adaptada a sus necesidades específicas.</p>
+        </div>
+        <div class="pillar-card reveal">
+        <div class="pillar-number">04</div>
+        <div class="pillar-icon">
+            <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 4l5 2.18V11c0 3.5-2.33 6.79-5 7.93-2.67-1.14-5-4.43-5-7.93V7.18L12 5z"/></svg>
+        </div>
+        <div class="pillar-name">Incentivar</div>
+        <p class="pillar-desc">El comercio nacional mediante el tránsito de mercancías de importación y exportación en todos los puntos de México.</p>
+        </div>
+    </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section id="about">
+    <div class="reveal">
+        <div class="section-label">¿Quiénes somos?</div>
+        <h2 class="section-title">Plataforma logística<br>internacional</h2>
+        <p class="about-body">MexSí es una plataforma logística y de comercialización de productos a nivel internacional. Apoyamos a personas, empresas e instituciones en sus procesos de importación, exportación y transporte de mercancías tanto a nivel nacional como internacional.</p>
+        <a href="#contact" class="btn-primary">Hablar con un experto</a>
+    </div>
+    <div class="about-visual reveal">
+        <div class="about-card">
+        <div class="customs-grid">
+            <div class="customs-col">
+            <h4>Marítimas</h4>
+            <ul>
+                <li>Manzanillo</li>
+                <li>Lázaro Cárdenas</li>
+                <li>Guaymas</li>
+                <li>Altamira</li>
+                <li>Veracruz</li>
+            </ul>
+            </div>
+            <div class="customs-col">
+            <h4>Terrestres</h4>
+            <ul>
+                <li>Laredo</li>
+                <li>Colombia</li>
+                <li>San Diego</li>
+                <li>Ciudad Hidalgo</li>
+            </ul>
+            </div>
+            <div class="customs-col">
+            <h4>Aéreas</h4>
+            <ul>
+                <li>AICM</li>
+                <li>AIFA</li>
+                <li>Monterrey</li>
+                <li>Guadalajara</li>
+                <li>Querétaro</li>
+                <li>Toluca</li>
+            </ul>
+            </div>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section id="services">
+    <div class="section-header reveal">
+        <div class="section-label">Lo que hacemos</div>
+        <h2 class="section-title">Nuestros servicios</h2>
+    </div>
+    <div class="services-grid">
+        <div class="service-card reveal">
+        <div class="service-icon orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF931E" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+        </div>
+        <div class="service-content">
+            <h3>Importación</h3>
+            <p>Coordinamos el proceso completo de ingreso de mercancías al territorio nacional, gestionando trámites aduaneros, permisos y logística de entrega.</p>
+        </div>
+        </div>
+        <div class="service-card reveal">
+        <div class="service-icon teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#51A3A3" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+        </div>
+        <div class="service-content">
+            <h3>Exportación</h3>
+            <p>Conectamos a proveedores mexicanos con compradores internacionales, manejando documentación, normas y tiempos de entrega con precisión.</p>
+        </div>
+        </div>
+        <div class="service-card reveal">
+        <div class="service-icon lavender">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8D80AD" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+        </div>
+        <div class="service-content">
+            <h3>Transporte Nacional</h3>
+            <p>Flota propia con unidades secas, refrigeradas, plataformas y HAZMAT para cubrir rutas en todo el territorio mexicano con seguridad y puntualidad.</p>
+        </div>
+        </div>
+        <div class="service-card reveal">
+        <div class="service-icon orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF931E" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+        </div>
+        <div class="service-content">
+            <h3>Asesoría y Capacitación</h3>
+            <p>Amplio historial en consultoría de comercio exterior. Te ayudamos a manejar de forma más efectiva y segura tus transacciones internacionales.</p>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- SECTORS -->
+    <section id="sectors">
+    <div class="section-header reveal">
+        <div class="section-label">Industrias</div>
+        <h2 class="section-title">Sectores en los<br>que operamos</h2>
+    </div>
+    <div class="sectors-grid">
+        <div class="sector-card reveal">
+        <div class="sector-top orange"></div>
+        <div class="sector-body">
+            <h3>Alimentos y Bebidas</h3>
+            <ul>
+            <li>Carne congelada</li>
+            <li>Frutas refrigeradas</li>
+            <li>Café en grano</li>
+            <li>Miel de abeja</li>
+            <li>Flor de Jamaica</li>
+            </ul>
+        </div>
+        </div>
+        <div class="sector-card reveal">
+        <div class="sector-top teal"></div>
+        <div class="sector-body">
+            <h3>Maquinaria</h3>
+            <ul>
+            <li>Maquinaria médica</li>
+            <li>Maquinaria industrial</li>
+            <li>Líneas de producción</li>
+            <li>Bombas</li>
+            </ul>
+        </div>
+        </div>
+        <div class="sector-card reveal">
+        <div class="sector-top lavender"></div>
+        <div class="sector-body">
+            <h3>Manufactura</h3>
+            <ul>
+            <li>Textiles</li>
+            <li>Papel</li>
+            <li>Calzado</li>
+            <li>Plásticos</li>
+            <li>Juguetes</li>
+            </ul>
+        </div>
+        </div>
+        <div class="sector-card reveal">
+        <div class="sector-top dark"></div>
+        <div class="sector-body">
+            <h3>Electrónicos</h3>
+            <ul>
+            <li>Equipo de cómputo</li>
+            <li>Refacciones electrónicas</li>
+            <li>Televisores</li>
+            </ul>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- FLEET -->
+    <section id="fleet">
+    <div class="section-header reveal">
+        <div class="section-label">Capacidad operativa</div>
+        <h2 class="section-title">Nuestras unidades</h2>
+    </div>
+    <div class="fleet-grid">
+        <div class="fleet-card reveal">
+        <div class="fleet-card-title">Contenedores</div>
+        <ul>
+            <li>Porta contenedores 20 ft</li>
+            <li>Porta contenedores 40 ft</li>
+        </ul>
+        </div>
+        <div class="fleet-card reveal">
+        <div class="fleet-card-title">Cajas y Plataformas</div>
+        <ul>
+            <li>Cajas secas 40″</li>
+            <li>Cajas secas 48″</li>
+            <li>Plataformas 53″</li>
+        </ul>
+        </div>
+        <div class="fleet-card reveal">
+        <div class="fleet-card-title">Unidades Pequeñas</div>
+        <ul>
+            <li>Nissan 1.5 Ton / 3.5 Ton</li>
+            <li>Rabón</li>
+            <li>Torton</li>
+        </ul>
+        </div>
+        <div class="fleet-card reveal">
+        <div class="fleet-card-title">Especiales</div>
+        <ul>
+            <li>Unidades refrigeradas</li>
+            <li>Permiso HAZMAT</li>
+            <li>Capacidad de sobrepeso</li>
+        </ul>
+        </div>
+    </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+
+    {% include 'contactanos.html' %}
+
+    </section>
+
+{% endblock %}
