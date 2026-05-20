@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+
+# Entornos virtuales
+venv/
+env/
+.env
+*.env
+
+# Flask
+instance/
+*.db
+
+# VS Code
+.vscode/
+
+# Mac
+.DS_Store
+
+# Secrets
+config.py
