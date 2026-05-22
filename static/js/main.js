@@ -45,15 +45,15 @@
   });
 
 
-  // Scroll a #contact desde cualquier página
-window.addEventListener('DOMContentLoaded', () => {
-    if (window.location.hash === '#contact') {
-        // Pequeño delay para que cargue el DOM y las animaciones
-        setTimeout(() => {
-            const target = document.getElementById('contact');
-            if (target) {
-                target.scrollIntoView({ behavior: 'smooth' });
-            }
-        }, 300);
-    }
-});
+//   // Scroll a #contact desde cualquier página
+// window.addEventListener('DOMContentLoaded', () => {
+//     if (window.location.hash === '#contact') {
+//         // Pequeño delay para que cargue el DOM y las animaciones
+//         setTimeout(() => {
+//             const target = document.getElementById('contact');
+//             if (target) {
+//                 target.scrollIntoView({ behavior: 'smooth' });
+//             }
+//         }, 300);
+//     }
+// });
