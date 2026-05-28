@@ -125,6 +125,17 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(57,57,58,.12); }
     z-index: 2;
 }
 
+@media (max-width: 768px) {
+    #hero {
+        background-image: url("../PNG/hero_mobile.png");
+        background-position: center top;
+        grid-template-columns: 1fr;
+        padding-top: 100px;
+        padding-bottom: 5rem;
+    }
+    /* ... el resto que ya tienes */
+}
+
 .hero-content { position: relative; z-index: 2; }
 
 .hero-eyebrow {
