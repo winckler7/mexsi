@@ -92,7 +92,7 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(57,57,58,.12); }
     overflow: hidden;
 
     /* imagen de fondo desktop */
-    background-image: url("../PNG/hero-desktop.png");
+    background-image: url("../JPG/hero-desktop.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -127,7 +127,7 @@ nav.scrolled { box-shadow: 0 4px 30px rgba(57,57,58,.12); }
 
 @media (max-width: 768px) {
     #hero {
-        background-image: url("../PNG/hero_mobile.png");
+        background-image: url("../JPG/hero_mobile.jpg");
         background-position: center top;
         grid-template-columns: 1fr;
         padding-top: 100px;

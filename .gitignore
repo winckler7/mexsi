@@ -18,6 +18,8 @@ instance/
 
 # Mac
 .DS_Store
+static/.DS_Store
+
 
 # Secrets
 config.py
