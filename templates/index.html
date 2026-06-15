@@ -21,20 +21,20 @@
     <div class="hero-visual">
         <div class="hero-icon-wrap">
         <!-- Portrait logo for hero (white version) -->
-        <img src="{{ url_for('static', filename='SVG/Icon.svg') }}" alt="simbolo de MexSí"/>
+        <img src="{{ url_for('static', filename='SVG/Icon.svg') }}" alt="simbolo de MEXSI"/>
         </div>
         <div class="hero-stats">
         <div class="stat-item">
-            <span class="stat-num">3</span>
-            <span class="stat-label">Aduanas marítimas</span>
+            <span class="stat-num">16</span>
+            <span class="stat-label">Aduanas mexicanas operadas</span>
         </div>
         <div class="stat-item">
-            <span class="stat-num">4</span>
-            <span class="stat-label">Cruces terrestres</span>
+            <span class="stat-num">+12</span>
+            <span class="stat-label">Mercados internacionales</span>
         </div>
         <div class="stat-item">
-            <span class="stat-num">6</span>
-            <span class="stat-label">Aeropuertos</span>
+            <span class="stat-num">8</span>
+            <span class="stat-label">Servicios especializados</span>
         </div>
         </div>
     </div>
@@ -87,11 +87,12 @@
     <div class="reveal">
         <div class="section-label">¿Quiénes somos?</div>
         <h2 class="section-title">Plataforma logística<br>internacional</h2>
-        <p class="about-body">MexSí es una plataforma logística y de comercialización de productos a nivel internacional. Apoyamos a personas, empresas e instituciones en sus procesos de importación, exportación y transporte de mercancías tanto a nivel nacional como internacional.</p>
-        <a href="#contact" class="btn-primary">Hablar con un experto</a>
+        <p class="about-body">Ponemos a tu servicio nuestra amplia experiencia en operaciones de importación y exportación con personal altamente calificado. Nuestra experiencia permite que tus operaciones sean más eficientes alrededor del mundo y en México.</p>
+        <a href="https://wa.me/522291890611?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20los%20servicios%20de%20MEXSI" target="_blank" class="btn-primary">Escríbenos al WhatsApp</a>
     </div>
     <div class="about-visual reveal">
         <div class="about-card">
+        <h4 class="customs-title">Nuestras aduanas:</h4>
         <div class="customs-grid">
             <div class="customs-col">
             <h4>Marítimas</h4>
@@ -101,6 +102,8 @@
                 <li>Guaymas</li>
                 <li>Altamira</li>
                 <li>Veracruz</li>
+                <li>Progreso</li>
+                <li>Mazatlan</li>
             </ul>
             </div>
             <div class="customs-col">
@@ -108,7 +111,6 @@
             <ul>
                 <li>Laredo</li>
                 <li>Colombia</li>
-                <li>San Diego</li>
                 <li>Ciudad Hidalgo</li>
             </ul>
             </div>
@@ -137,38 +139,74 @@
     <div class="services-grid">
         <div class="service-card reveal">
         <div class="service-icon orange">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#FF931E" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF931E" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
         </div>
         <div class="service-content">
-            <h3>Importación</h3>
-            <p>Coordinamos el proceso completo de ingreso de mercancías al territorio nacional, gestionando trámites aduaneros, permisos y logística de entrega.</p>
+            <h3>Transporte Internacional FTL y LTL</h3>
+            <p>Movemos tu carga completa o consolidada a cualquier destino internacional con rutas optimizadas y tiempos de entrega confiables.</p>
         </div>
         </div>
         <div class="service-card reveal">
         <div class="service-icon teal">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#51A3A3" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 8 16 12 12 16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#51A3A3" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
         </div>
         <div class="service-content">
-            <h3>Exportación</h3>
-            <p>Conectamos a proveedores mexicanos con compradores internacionales, manejando documentación, normas y tiempos de entrega con precisión.</p>
+            <h3>Transporte Nacional FTL y LTL</h3>
+            <p>Cobertura en todo el territorio mexicano con unidades secas, refrigeradas, plataformas y permisos HAZMAT para cualquier tipo de mercancía.</p>
         </div>
         </div>
         <div class="service-card reveal">
         <div class="service-icon lavender">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#8D80AD" stroke-width="2"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8D80AD" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
         </div>
         <div class="service-content">
-            <h3>Transporte Nacional</h3>
-            <p>Flota propia con unidades secas, refrigeradas, plataformas y HAZMAT para cubrir rutas en todo el territorio mexicano con seguridad y puntualidad.</p>
+            <h3>Despacho Aduanal</h3>
+            <p>Gestión completa de trámites de importación y exportación en 16 aduanas mexicanas, con agentes especializados y cumplimiento normativo.</p>
         </div>
         </div>
         <div class="service-card reveal">
         <div class="service-icon orange">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#FF931E" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF931E" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <div class="service-content">
-            <h3>Asesoría y Capacitación</h3>
-            <p>Amplio historial en consultoría de comercio exterior. Te ayudamos a manejar de forma más efectiva y segura tus transacciones internacionales.</p>
+            <h3>Comercializadora General y Sectorial</h3>
+            <p>Operamos como comercializadora en sectores textil, calzado, siderúrgico, productos siderúrgicos y bebidas alcohólicas, facilitando la compraventa entre mercados.</p>
+        </div>
+        </div>
+        <div class="service-card reveal">
+        <div class="service-icon teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#51A3A3" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+        </div>
+        <div class="service-content">
+            <h3>Certificaciones y Cumplimiento de NOMs y RNAs</h3>
+            <p>Asesoramos y gestionamos el cumplimiento de Normas Oficiales Mexicanas y Regulaciones No Arancelarias para la correcta internación de mercancías.</p>
+        </div>
+        </div>
+        <div class="service-card reveal">
+        <div class="service-icon lavender">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#8D80AD" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div class="service-content">
+            <h3>Seguro de Mercancías</h3>
+            <p>Protegemos tu carga con coberturas adaptadas a cada tipo de embarque, minimizando riesgos durante el transporte nacional e internacional.</p>
+        </div>
+        </div>
+        <div class="service-card reveal">
+        <div class="service-icon orange">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#FF931E" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        </div>
+        <div class="service-content">
+            <h3>Custodia de Mercancías</h3>
+            <p>Vigilancia y resguardo especializado de tu carga durante traslados sensibles, garantizando integridad y trazabilidad en todo momento.</p>
+        </div>
+        </div>
+        <div class="service-card reveal">
+        <div class="service-icon teal">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#51A3A3" stroke-width="2"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
+        </div>
+        <div class="service-content">
+            <h3>Capacitación y Consultoría</h3>
+            <p>Formación especializada y asesoría estratégica en comercio internacional para que tu empresa opere con mayor eficiencia y seguridad.</p>
         </div>
         </div>
     </div>
@@ -186,11 +224,9 @@
         <div class="sector-body">
             <h3>Alimentos y Bebidas</h3>
             <ul>
-            <li>Carne congelada</li>
-            <li>Frutas refrigeradas</li>
-            <li>Café en grano</li>
-            <li>Miel de abeja</li>
-            <li>Flor de Jamaica</li>
+            <li>Alimentos congelados</li>
+            <li>Alimentos secos</li>
+            <li>Alimentos envasados</li>
             </ul>
         </div>
         </div>
@@ -216,6 +252,7 @@
             <li>Calzado</li>
             <li>Plásticos</li>
             <li>Juguetes</li>
+            <li>Tubos y manufacturas de acero</li>
             </ul>
         </div>
         </div>
