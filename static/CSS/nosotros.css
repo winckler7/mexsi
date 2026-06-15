@@ -1,111 +1,10 @@
-/* ═══════════════════════════════════════════════════
-   nosotros.css  –  MexSí / Página Nosotros
-   Depende de: styles.css (variables, reset, nav, footer)
-   ═══════════════════════════════════════════════════ */
+/* ============================================================
+   nosotros.css  –  MEXSI  |  Página Nosotros
+   Depende de styles.css para variables, reset, nav, footer,
+   helpers de sección y botones globales.
+   ============================================================ */
 
-/* ── SCROLL REVEAL ── */
-.reveal {
-  opacity: 0;
-  transform: translateY(28px);
-  transition: opacity .6s ease, transform .6s ease;
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* ── SHARED HELPERS ── */
-.section-label {
-  font-family: var(--font-display);
-  font-size: .8rem;
-  font-weight: 700;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--orange);
-  display: flex;
-  align-items: center;
-  gap: .6rem;
-  margin-bottom: .6rem;
-}
-.section-label::before {
-  content: '';
-  display: block;
-  width: 28px; height: 2px;
-  background: var(--orange);
-}
-.section-label.label-light { color: var(--teal); }
-.section-label.label-light::before { background: var(--teal); }
-
-.section-title {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(2rem, 4vw, 3rem);
-  text-transform: uppercase;
-  line-height: 1.05;
-  color: var(--dark);
-}
-.section-title.light { color: var(--white); }
-
-.section-sub {
-  margin-top: .75rem;
-  font-size: 1rem;
-  color: #666;
-  max-width: 540px;
-  line-height: 1.65;
-}
-.section-header { margin-bottom: 3rem; }
-
-.btn-primary {
-  display: inline-block;
-  background: var(--orange);
-  color: var(--white);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  padding: .85rem 2rem;
-  border-radius: 2px;
-  text-decoration: none;
-  transition: background .2s, transform .15s;
-}
-.btn-primary:hover { background: #e07a0a; transform: translateY(-2px); }
-
-.btn-outline-light {
-  display: inline-block;
-  background: transparent;
-  color: var(--dark);
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 1rem;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  padding: .85rem 2rem;
-  border: 2px solid rgba(57,57,58,.3);
-  border-radius: 2px;
-  text-decoration: none;
-  transition: border-color .2s, transform .15s;
-}
-.btn-outline-light:hover { border-color: var(--dark); transform: translateY(-2px); }
-
-.cta-actions {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-/* ── PAGE HERO ── */
-.page-hero {
-  min-height: 55vh;
-  background: var(--dark);
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 8rem 5vw 5rem;
-  position: relative;
-  overflow: hidden;
-}
+/* ── PAGE HERO (variante nosotros) ── */
 .nos-hero::before {
   content: '';
   position: absolute;
@@ -118,44 +17,9 @@
 .nos-hero::after {
   content: '';
   position: absolute;
-  bottom: 0; left: 5vw;
-  right: 0; height: 4px;
+  bottom: 0; left: 5vw; right: 0;
+  height: 4px;
   background: linear-gradient(90deg, var(--orange) 0%, var(--teal) 50%, var(--lavender) 100%);
-}
-.page-hero-content { position: relative; z-index: 2; }
-.page-eyebrow {
-  font-family: var(--font-display);
-  font-size: .8rem;
-  font-weight: 700;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: var(--teal);
-  display: flex;
-  align-items: center;
-  gap: .7rem;
-  margin-bottom: 1rem;
-}
-.page-eyebrow::before {
-  content: '';
-  display: block;
-  width: 36px; height: 2px;
-  background: var(--teal);
-}
-.page-title {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(3rem, 7vw, 6rem);
-  text-transform: uppercase;
-  line-height: .95;
-  color: var(--white);
-}
-.page-title .accent { color: var(--orange); }
-.page-subtitle {
-  margin-top: 1.25rem;
-  font-size: 1.1rem;
-  color: rgba(247,247,247,.65);
-  max-width: 480px;
-  line-height: 1.65;
 }
 
 /* ── QUIÉNES SOMOS ── */
@@ -192,6 +56,7 @@
   transition: border-color .25s;
 }
 .value-item:hover { border-color: var(--orange); }
+
 .value-icon {
   width: 44px; height: 44px;
   border-radius: 2px;
@@ -204,6 +69,7 @@
 .value-icon.teal     { background: rgba(81,163,163,.12);  color: var(--teal); }
 .value-icon.lavender { background: rgba(141,128,173,.12); color: var(--lavender); }
 .value-icon svg { width: 22px; height: 22px; }
+
 .value-item h4 {
   font-family: var(--font-display);
   font-weight: 700;
@@ -248,10 +114,7 @@
   transform: translateY(-3px);
   box-shadow: 0 8px 30px rgba(255,147,30,.1);
 }
-.mercado-flag {
-  font-size: 2.5rem;
-  line-height: 1;
-}
+.mercado-flag { font-size: 2.5rem; line-height: 1; }
 .mercado-card span {
   font-family: var(--font-display);
   font-weight: 700;
@@ -357,8 +220,9 @@
   border-top: 3px solid var(--orange);
 }
 .nos-cta-content h2 {
-  font-family: var(--font-display);
+  font-family: var(--font-heading);
   font-weight: 800;
+  font-style: italic;
   font-size: clamp(2rem, 5vw, 3.2rem);
   text-transform: uppercase;
   line-height: 1.05;
@@ -378,8 +242,8 @@
 }
 
 @media (max-width: 768px) {
-  .nos-who { grid-template-columns: 1fr; gap: 3rem; }
+  .nos-who        { grid-template-columns: 1fr; gap: 3rem; }
   .nos-social-inner { grid-template-columns: 1fr; gap: 3rem; }
-  .mercados-grid { grid-template-columns: repeat(2, 1fr); }
-  .idiomas-grid  { grid-template-columns: repeat(2, 1fr); }
+  .mercados-grid  { grid-template-columns: repeat(2, 1fr); }
+  .idiomas-grid   { grid-template-columns: repeat(2, 1fr); }
 }
