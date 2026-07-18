@@ -1,145 +1,145 @@
 {% extends "layout.html" %}
- 
+
 {% block head %}
 <link rel="stylesheet" href="{{ url_for('static', filename='CSS/servicios.css') }}">
 {% endblock %}
- 
+
 {% block body %}
- 
+
 <!-- PAGE HERO -->
 <section class="page-hero">
   <div class="page-hero-content">
-    <div class="page-eyebrow">Lo que hacemos</div>
-    <h1 class="page-title">Logística <span class="accent">de verdad</span></h1>
-    <p class="page-subtitle">Gestión integral de operaciones con compromiso, transparencia y excelencia en cada proceso.</p>
+    <div class="page-eyebrow" data-i18n="srvp.eyebrow">Lo que hacemos</div>
+    <h1 class="page-title" data-i18n-html="srvp.hero.h1">Logística <span class="accent">de verdad</span></h1>
+    <p class="page-subtitle" data-i18n="srvp.subtitle">Gestión integral de operaciones con compromiso, transparencia y excelencia en cada proceso.</p>
   </div>
   <div class="page-hero-bar">
-    <span>Importación</span>
-    <span>Exportación</span>
-    <span>Transporte</span>
-    <span>Consultoría</span>
+    <span data-i18n="srvp.bar.0">Importación</span>
+    <span data-i18n="srvp.bar.1">Exportación</span>
+    <span data-i18n="srvp.bar.2">Transporte</span>
+    <span data-i18n="srvp.bar.3">Consultoría</span>
     <span>NOMs</span>
-    <span>Padrón</span>
+    <span data-i18n="srvp.bar.5">Padrón</span>
   </div>
 </section>
- 
+
 <!-- INTRO SPLIT -->
 <section class="srv-intro">
   <div class="srv-intro-text reveal">
-    <div class="section-label">Nuestro compromiso</div>
-    <h2 class="section-title">Operaciones<br>transparentes</h2>
-    <p>Nuestro firme compromiso es la <strong>excelencia</strong> en todas las operaciones que llevamos a cabo para cumplir con las expectativas y necesidades de nuestros clientes.</p>
-    <p>Ofrecemos acompañamiento, consultoría y seguridad durante todo el proceso, asegurando operaciones logísticas <strong>transparentes y eficientes</strong>.</p>
+    <div class="section-label" data-i18n="srvp.intro.label">Nuestro compromiso</div>
+    <h2 class="section-title" data-i18n-html="srvp.intro.h2">Operaciones<br>transparentes</h2>
+    <p data-i18n-html="srvp.intro.p1">Nuestro firme compromiso es la <strong>excelencia</strong> en todas las operaciones que llevamos a cabo para cumplir con las expectativas y necesidades de nuestros clientes.</p>
+    <p data-i18n-html="srvp.intro.p2">Ofrecemos acompañamiento, consultoría y seguridad durante todo el proceso, asegurando operaciones logísticas <strong>transparentes y eficientes</strong>.</p>
   </div>
   <div class="srv-intro-cards reveal">
     <div class="stat-card">
       <span class="stat-num">13</span>
-      <span class="stat-label">Aduanas operadas</span>
+      <span class="stat-label" data-i18n="srvp.stat.0">Aduanas operadas</span>
     </div>
     <div class="stat-card">
       <span class="stat-num">9</span>
-      <span class="stat-label">Mercados internacionales</span>
+      <span class="stat-label" data-i18n="srvp.stat.1">Mercados internacionales</span>
     </div>
     <div class="stat-card accent-card">
       <span class="stat-num">6</span>
-      <span class="stat-label">Idiomas de soporte</span>
+      <span class="stat-label" data-i18n="srvp.stat.2">Idiomas de soporte</span>
     </div>
   </div>
 </section>
- 
+
 <!-- SERVICES GRID -->
 <section class="srv-grid-section">
   <div class="section-header reveal">
-    <div class="section-label">Catálogo</div>
-    <h2 class="section-title">Nuestros servicios</h2>
+    <div class="section-label" data-i18n="srvp.cat.label">Catálogo</div>
+    <h2 class="section-title" data-i18n="srvp.cat.title">Nuestros servicios</h2>
   </div>
- 
+
   <div class="srv-grid">
- 
+
     <div class="srv-card srv-card--large reveal">
       <div class="srv-card-accent orange"></div>
       <div class="srv-card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
       </div>
-      <h3>Despacho de Importación y Exportación</h3>
-      <p>Gestionamos el proceso completo de entrada y salida de mercancías, incluyendo trámites aduaneros, permisos, normas y coordinación de entrega puerta a puerta.</p>
-      <div class="srv-tag">Aduanas marítimas · terrestres · aéreas</div>
+      <h3 data-i18n="srvp.card.0.title">Despacho de Importación y Exportación</h3>
+      <p data-i18n="srvp.card.0.desc">Gestionamos el proceso completo de entrada y salida de mercancías, incluyendo trámites aduaneros, permisos, normas y coordinación de entrega puerta a puerta.</p>
+      <div class="srv-tag" data-i18n="srvp.card.0.tag">Aduanas marítimas · terrestres · aéreas</div>
     </div>
- 
+
     <div class="srv-card reveal">
       <div class="srv-card-accent teal"></div>
       <div class="srv-card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
       </div>
-      <h3>Transporte Internacional</h3>
-      <p>Cobertura marítima, aérea y terrestre con alianzas globales que garantizan tiempos de tránsito competitivos.</p>
-      <div class="srv-tag">Marítimo · Aéreo · Terrestre</div>
+      <h3 data-i18n="srvp.card.1.title">Transporte Internacional</h3>
+      <p data-i18n="srvp.card.1.desc">Cobertura marítima, aérea y terrestre con alianzas globales que garantizan tiempos de tránsito competitivos.</p>
+      <div class="srv-tag" data-i18n="srvp.card.1.tag">Marítimo · Aéreo · Terrestre</div>
     </div>
- 
+
     <div class="srv-card reveal">
       <div class="srv-card-accent lavender"></div>
       <div class="srv-card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
       </div>
-      <h3>Transporte Nacional</h3>
-      <p>Servicio dedicado y consolidado en todo el territorio mexicano con flota propia, puntualidad y seguridad.</p>
-      <div class="srv-tag">Dedicado · Consolidado</div>
+      <h3 data-i18n="srvp.card.2.title">Transporte Nacional</h3>
+      <p data-i18n="srvp.card.2.desc">Servicio dedicado y consolidado en todo el territorio mexicano con flota propia, puntualidad y seguridad.</p>
+      <div class="srv-tag" data-i18n="srvp.card.2.tag">Dedicado · Consolidado</div>
     </div>
- 
+
     <div class="srv-card reveal">
       <div class="srv-card-accent orange"></div>
       <div class="srv-card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
       </div>
-      <h3>Consultoría en Comercio Exterior</h3>
-      <p>Cursos, talleres y asesoría personalizada para optimizar tus operaciones de comercio internacional.</p>
-      <div class="srv-tag">Capacitación · Asesoría</div>
+      <h3 data-i18n="srvp.card.3.title">Consultoría en Comercio Exterior</h3>
+      <p data-i18n="srvp.card.3.desc">Cursos, talleres y asesoría personalizada para optimizar tus operaciones de comercio internacional.</p>
+      <div class="srv-tag" data-i18n="srvp.card.3.tag">Capacitación · Asesoría</div>
     </div>
- 
+
     <div class="srv-card reveal">
       <div class="srv-card-accent teal"></div>
       <div class="srv-card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
-      <h3>Cumplimiento de NOMs</h3>
-      <p>Coordinación integral en el cumplimiento de Normas Oficiales Mexicanas y certificaciones requeridas para importación.</p>
-      <div class="srv-tag">Normas · Certificaciones</div>
+      <h3 data-i18n="srvp.card.4.title">Cumplimiento de NOMs</h3>
+      <p data-i18n="srvp.card.4.desc">Coordinación integral en el cumplimiento de Normas Oficiales Mexicanas y certificaciones requeridas para importación.</p>
+      <div class="srv-tag" data-i18n="srvp.card.4.tag">Normas · Certificaciones</div>
     </div>
- 
+
     <div class="srv-card reveal">
       <div class="srv-card-accent lavender"></div>
       <div class="srv-card-icon">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
       </div>
-      <h3>Padrón de Importadores</h3>
-      <p>Gestión del padrón general y sectoriales: Textil, calzado, siderúrgico, productos siderúrgicos y bebidas alcohólicas.</p>
-      <div class="srv-tag">General · Sectoriales</div>
+      <h3 data-i18n="srvp.card.5.title">Padrón de Importadores</h3>
+      <p data-i18n="srvp.card.5.desc">Gestión del padrón general y sectoriales: Textil, calzado, siderúrgico, productos siderúrgicos y bebidas alcohólicas.</p>
+      <div class="srv-tag" data-i18n="srvp.card.5.tag">General · Sectoriales</div>
     </div>
- 
+
   </div>
 </section>
- 
+
 <!-- CONSULTORÍA DETALLE -->
 <section class="srv-consultoria">
   <div class="srv-consultoria-inner">
     <div class="srv-consultoria-text reveal">
-      <div class="section-label">Especialización</div>
-      <h2 class="section-title">Servicios de<br>Consultoría</h2>
-      <p>En MEXSI buscamos apoyar a empresarios y productores en todas sus necesidades de logística y comercio exterior, por lo que contamos con personal especializado en:</p>
+      <div class="section-label" data-i18n="srvp.cons.label">Especialización</div>
+      <h2 class="section-title" data-i18n-html="srvp.cons.h2">Servicios de<br>Consultoría</h2>
+      <p data-i18n="srvp.cons.p">En MEXSI buscamos apoyar a empresarios y productores en todas sus necesidades de logística y comercio exterior, por lo que contamos con personal especializado en:</p>
       <ul class="consultoria-list">
-        <li>Investigación de mercados</li>
-        <li>Comercio internacional</li>
-        <li>Cumplimiento de NOMs</li>
-        <li>Despacho Aduanal</li>
-        <li>Padrón de importadores y exportadores</li>
+        <li data-i18n="srvp.cons.li.0">Investigación de mercados</li>
+        <li data-i18n="srvp.cons.li.1">Comercio internacional</li>
+        <li data-i18n="srvp.cons.li.2">Cumplimiento de NOMs</li>
+        <li data-i18n="srvp.cons.li.3">Despacho Aduanal</li>
+        <li data-i18n="srvp.cons.li.4">Padrón de importadores y exportadores</li>
       </ul>
-      <a href="{{ url_for('contacto') }}" class="btn-primary">Solicitar asesoría</a>
+      <a href="{{ url_for('contacto') }}" class="btn-primary" data-i18n="srvp.cons.cta">Solicitar asesoría</a>
     </div>
     <div class="srv-consultoria-aduanas reveal">
-      <h3 class="aduanas-title">Aduanas que operamos</h3>
+      <h3 class="aduanas-title" data-i18n="srvp.adu.title">Aduanas que operamos</h3>
       <div class="aduanas-grid">
         <div class="aduana-col">
-          <div class="aduana-type orange">Marítimas</div>
+          <div class="aduana-type orange" data-i18n="srvp.adu.mar">Marítimas</div>
           <ul>
             <li>Manzanillo</li>
             <li>Lázaro Cárdenas</li>
@@ -149,7 +149,7 @@
           </ul>
         </div>
         <div class="aduana-col">
-          <div class="aduana-type teal">Terrestres</div>
+          <div class="aduana-type teal" data-i18n="srvp.adu.ter">Terrestres</div>
           <ul>
             <li>Laredo</li>
             <li>Colombia</li>
@@ -158,7 +158,7 @@
           </ul>
         </div>
         <div class="aduana-col">
-          <div class="aduana-type lavender">Aéreas</div>
+          <div class="aduana-type lavender" data-i18n="srvp.adu.air">Aéreas</div>
           <ul>
             <li>AICM</li>
             <li>AIFA</li>
@@ -172,62 +172,62 @@
     </div>
   </div>
 </section>
- 
+
 <!-- TESTIMONIALS -->
 <section class="srv-testimonials">
   <div class="section-header reveal">
-    <div class="section-label">Clientes</div>
-    <h2 class="section-title">¿Qué piensan<br>nuestros clientes?</h2>
-    <p class="section-sub">Todos nuestros clientes se acercaron por necesitar los productos o servicios de MEXSI. Sin embargo se quedaron por la emoción y la pasión con que operamos día a día.</p>
+    <div class="section-label" data-i18n="srvp.test.label">Clientes</div>
+    <h2 class="section-title" data-i18n-html="srvp.test.h2">¿Qué piensan<br>nuestros clientes?</h2>
+    <p class="section-sub" data-i18n="srvp.test.sub">Todos nuestros clientes se acercaron por necesitar los productos o servicios de MEXSI. Sin embargo se quedaron por la emoción y la pasión con que operamos día a día.</p>
   </div>
   <div class="testimonials-grid">
     <div class="testimonial-card reveal">
       <div class="quote-mark">"</div>
-      <p>Mis clientes han experimentado insumos procedentes de otros países, gracias al acercamiento con <strong>MEXSI</strong>.</p>
+      <p data-i18n-html="srvp.t.0.text">Mis clientes han experimentado insumos procedentes de otros países, gracias al acercamiento con <strong>MEXSI</strong>.</p>
       <div class="testimonial-author">
         <div class="author-avatar">B</div>
         <div>
           <div class="author-name">Brasil Consultores</div>
-          <div class="author-role">Consultoría empresarial</div>
+          <div class="author-role" data-i18n="srvp.t.0.role">Consultoría empresarial</div>
         </div>
       </div>
     </div>
     <div class="testimonial-card reveal">
       <div class="quote-mark">"</div>
-      <p>La experticia y profesionalismo de <strong>MEXSI</strong> nos ha sido de mucha ayuda para acelerar nuestro proyecto de exportación y seguimos trabajando de la mano.</p>
+      <p data-i18n-html="srvp.t.1.text">La experticia y profesionalismo de <strong>MEXSI</strong> nos ha sido de mucha ayuda para acelerar nuestro proyecto de exportación y seguimos trabajando de la mano.</p>
       <div class="testimonial-author">
         <div class="author-avatar">S</div>
         <div>
           <div class="author-name">SuperFoodsToGo</div>
-          <div class="author-role">Exportación de alimentos</div>
+          <div class="author-role" data-i18n="srvp.t.1.role">Exportación de alimentos</div>
         </div>
       </div>
     </div>
     <div class="testimonial-card reveal">
       <div class="quote-mark">"</div>
-      <p>El equipo de MEXSI nos acompañó en cada paso del proceso. Confianza total desde el primer día.</p>
+      <p data-i18n="srvp.t.2.text">El equipo de MEXSI nos acompañó en cada paso del proceso. Confianza total desde el primer día.</p>
       <div class="testimonial-author">
         <div class="author-avatar">C</div>
         <div>
           <div class="author-name">Café Yasin Orgánico</div>
-          <div class="author-role">Exportación de café</div>
+          <div class="author-role" data-i18n="srvp.t.2.role">Exportación de café</div>
         </div>
       </div>
     </div>
   </div>
 </section>
- 
+
 <!-- CTA BANNER -->
 <section class="srv-cta reveal">
   <div class="srv-cta-content">
-    <h2>¡Hacemos el diagnóstico<br>de su empresa!</h2>
-    <p>Ponemos nuestras alianzas estratégicas a nivel mundial al servicio de tu operación.</p>
+    <h2 data-i18n-html="srvp.cta.h2">¡Hacemos el diagnóstico<br>de su empresa!</h2>
+    <p data-i18n="srvp.cta.p">Ponemos nuestras alianzas estratégicas a nivel mundial al servicio de tu operación.</p>
     <div class="cta-actions">
-      <a href="{{ url_for('contacto') }}" class="btn-primary">Solicitar asesoría</a>
+      <a href="{{ url_for('contacto') }}" class="btn-primary" data-i18n="srvp.cta.btn">Solicitar asesoría</a>
     </div>
   </div>
 </section>
- 
+
 <script>
   const reveals = document.querySelectorAll('.reveal');
   const observer = new IntersectionObserver((entries) => {
@@ -240,5 +240,5 @@
   }, { threshold: 0.08 });
   reveals.forEach(el => observer.observe(el));
 </script>
- 
+
 {% endblock %}

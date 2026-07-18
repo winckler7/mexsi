@@ -34,11 +34,12 @@
         </a>
 
         <ul class="nav-links">
-            <li><a href="/nosotros">Nosotros</a></li>
-            <li><a href="/servicios">Servicios</a></li>
-            <li><a href="/contacto" class="nav-cta">Contacto</a></li>
+            <li><a href="/nosotros" data-i18n="nav.nosotros">Nosotros</a></li>
+            <li><a href="/servicios" data-i18n="nav.servicios">Servicios</a></li>
+            <li><a href="/contacto" class="nav-cta" data-i18n="nav.contacto">Contacto</a></li>
         </ul>
 
+        <button class="lang-toggle" data-current-lang="es" aria-label="Cambiar idioma">EN</button>
         <button class="hamburger" aria-label="Menú">
             <span></span><span></span><span></span>
         </button>
@@ -54,30 +55,30 @@
         <div class="footer-grid">
             <div class="footer-brand">
            <img src="{{ url_for('static', filename='SVG/Landscape-neg.svg') }}" alt="Logo MEXSI" />
-            <p>Plataforma logística y de comercialización de productos a nivel internacional. Impulsamos el comercio de México con el mundo.</p>
+            <p data-i18n="footer.brand">Plataforma logística y de comercialización de productos a nivel internacional. Impulsamos el comercio de México con el mundo.</p>
             </div>
             <div class="footer-col">
-            <h4>Navegación</h4>
+            <h4 data-i18n="footer.nav.title">Navegación</h4>
             <ul>
-                <li><a href="/">Inicio</a></li>
-                <li><a href="/nosotros">Nosotros</a></li>
-                <li><a href="/servicios">Servicios</a></li>
-                <li><a href="/contacto">Contacto</a></li>
+                <li><a href="/" data-i18n="footer.nav.inicio">Inicio</a></li>
+                <li><a href="/nosotros" data-i18n="footer.nav.nosotros">Nosotros</a></li>
+                <li><a href="/servicios" data-i18n="footer.nav.servicios">Servicios</a></li>
+                <li><a href="/contacto" data-i18n="footer.nav.contacto">Contacto</a></li>
             </ul>
             </div>
             <div class="footer-col">
-            <h4>Servicios</h4>
+            <h4 data-i18n="footer.srv.title">Servicios</h4>
             <ul>
-                <li><a href="/servicios">Transporte Internacional</a></li>
-                <li><a href="/servicios">Transporte Nacional</a></li>
-                <li><a href="/servicios">Despacho Aduanal</a></li>
-                <li><a href="/servicios">Comercializadora</a></li>
-                <li><a href="/servicios">Seguro y Custodia</a></li>
-                <li><a href="/servicios">Capacitación</a></li>
+                <li><a href="/servicios" data-i18n="footer.srv.1">Transporte Internacional</a></li>
+                <li><a href="/servicios" data-i18n="footer.srv.2">Transporte Nacional</a></li>
+                <li><a href="/servicios" data-i18n="footer.srv.3">Despacho Aduanal</a></li>
+                <li><a href="/servicios" data-i18n="footer.srv.4">Comercializadora</a></li>
+                <li><a href="/servicios" data-i18n="footer.srv.5">Seguro y Custodia</a></li>
+                <li><a href="/servicios" data-i18n="footer.srv.6">Capacitación</a></li>
             </ul>
             </div>
             <div class="footer-col">
-            <h4>Contacto</h4>
+            <h4 data-i18n="footer.contact.title">Contacto</h4>
             <ul>
                 <li><a href="tel:+528118797160">MTY: +52 81 1879 7160</a></li>
                 <li><a href="mailto:comercial@mexsi.org">comercial@mexsi.org</a></li>
@@ -98,6 +99,8 @@
     </footer>
 
     <script src="{{ url_for('static', filename='JS/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/content.js') }}"></script>
+    <script src="{{ url_for('static', filename='JS/i18n.js') }}"></script>
 
 
 </body>
